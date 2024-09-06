@@ -31,4 +31,4 @@ async function checkFiles(){
   }
 }
 
-export { makeDatabase, checkFiles};
+export { checkFiles };
