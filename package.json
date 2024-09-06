@@ -1,5 +1,7 @@
 {
+  "type": "module",
   "dependencies": {
-    "pdfkit": "^0.15.0"
+    "pdfkit": "^0.15.0",
+    "sqlite3": "^5.1.7"
   }
 }
