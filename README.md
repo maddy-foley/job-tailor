@@ -8,8 +8,7 @@ Goals: to create a pdf generator to help job seekers tailor their job applicatio
 ```bash
     npm install
 ```
-## Create PDF Folder
-- Create a directory named ```/pdf``` in ```job-tailor``` directory
+
 ## Run program:
 In terminal under job-tailor directory run:
 ```terminal

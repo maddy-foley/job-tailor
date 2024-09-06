@@ -1,3 +1,6 @@
+import fs from 'fs';
+import sqlite3 from 'sqlite3';
+
 function makeDatabase(db){
   db.serialize(() => {
     db.run("CREATE TABLE lorem (info TEXT)");
@@ -16,4 +19,16 @@ function makeDatabase(db){
   db.close();
 }
 
-export { makeDatabase };
+async function checkFiles(){
+
+  if(!fs.existsSync('./data')){
+      fs.mkdirSync('./data');
+      const db = new sqlite3.Database('./data/.db');
+      makeDatabase(db);
+  }
+  if(!fs.existsSync('./pdf')){
+      fs.mkdirSync('./pdf');
+  }
+}
+
+export { makeDatabase, checkFiles};
