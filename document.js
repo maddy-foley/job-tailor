@@ -70,23 +70,23 @@ function makePDF(){
             }
 
         }
-        doc.moveDown();
-        doc.fontSize(14);
-        doc.font('Helvetica-Bold');
-        doc.fillColor('cornflowerblue');
-        doc.text('Education');
-
-        doc.fontSize(11);
-        doc.font('Helvetica');
-        doc.fillColor('black');
-
-        for(let i = 1; i < 3; i++){
-            doc.moveDown(0.1);
-            doc.text('Education #' + i);
-        }
 
 
+    }
+    // EDUCATION
 
+    doc.moveDown();
+    doc.fontSize(14);
+    doc.font('Helvetica-Bold');
+    doc.fillColor('cornflowerblue');
+    doc.text('Education');
+
+    doc.fontSize(11);
+    doc.font('Helvetica');
+    doc.fillColor('black');
+    for(let i = 1; i < 3; i++){
+        doc.moveDown(0.1);
+        doc.text('Education #' + i);
     }
     ///END
 
