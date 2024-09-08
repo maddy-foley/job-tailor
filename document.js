@@ -63,10 +63,15 @@ function makePDF(){
             doc.moveDown(0.3);
             doc.font('Helvetica-Oblique');
             doc.text('elaborate');
+
             if(i === 0){
-                doc.list(['1','2','3']);
+                doc.list(['1','2','3'], {
+                    indent: 20,
+                });
             } else {
-                doc.list(['1','2']);
+                doc.list(['1','2'], {
+                    indent: 20,
+                });
             }
 
         }
