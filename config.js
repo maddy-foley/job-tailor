@@ -6,7 +6,7 @@ import sqlite3 from 'sqlite3';
 function makeDatabase(db){
   db.serialize(() => {
     db.run(`CREATE TABLE canidate (
-      canidateid INTEGER PRIMARY KEY,
+      canid INTEGER PRIMARY KEY,
       firstname TEXT,
       lastname TEXT,
       email TEXT,
@@ -20,7 +20,7 @@ function makeDatabase(db){
       description TEXT,
       accomplishments TEXT,
       canid INTEGER,
-      FOREIGN KEY(canid) REFERENCES canidate(canidateid)
+      FOREIGN KEY(canid) REFERENCES canidate(canid)
       )
     `);
 
@@ -29,19 +29,19 @@ function makeDatabase(db){
       dates TEXT,
       description TEXT,
       canid INTEGER,
-      FOREIGN KEY(canid) REFERENCES canidate(canidateid)
+      FOREIGN KEY(canid) REFERENCES canidate(canid)
       )
     `);
     db.run(`CREATE TABLE languages (
       name TEXT,
       canid INTEGER,
-      FOREIGN KEY(canid) REFERENCES canidate(canidateid)
+      FOREIGN KEY(canid) REFERENCES canidate(canid)
       )
     `);
     db.run(`CREATE TABLE skills (
       name TEXT,
       canid INTEGER,
-      FOREIGN KEY(canid) REFERENCES canidate(canidateid)
+      FOREIGN KEY(canid) REFERENCES canidate(canid)
       )
     `);
 
