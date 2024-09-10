@@ -1,5 +1,6 @@
 import fs from 'fs';
 import sqlite3 from 'sqlite3';
+import { DIR_PATH_DB } from './constants.js';
 
 
 
@@ -75,18 +76,19 @@ async function checkFiles(){
 
   if(!fs.existsSync('./data')){
       fs.mkdirSync('./data');
-      const db = new sqlite3.Database('./data/db.sqlite');
+      const db = new sqlite3.Database(DIR_PATH_DB);
       makeDatabase(db);
   } else {
-    updateDatabase();
+    queryDatabase();
   }
   if(!fs.existsSync('./pdf')){
       fs.mkdirSync('./pdf');
   }
 }
 
-function updateDatabase(){
-  const db = new sqlite3.Database('./data/db.sqlite');
+function queryDatabase(){
+  const db = new sqlite3.Database(DIR_PATH_DB);
+
 }
 
 
