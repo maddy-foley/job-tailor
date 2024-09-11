@@ -10,7 +10,7 @@
       {
         "title": "Software Engineer I",
         "company": "Starting-Up Startup",
-        "dates": "2023-present",
+        "dates": "2024-present",
         "accomplishment": [
           {"point": "Developed database schemas and wrote SQL queries to support data retrieval and manipulation needs."},
           {"point": "Collaborated with senior developers on the design and implementation of RESTful APIs."},
@@ -20,7 +20,7 @@
     ],
     "project": [
       {
-        "title": "CrudyManagement",
+        "title": "CRUDi Management",
         "dates": "2022",
         "desctiption": "crm system",
         "accomplishment": [
@@ -38,7 +38,7 @@
         ]
       },
       {
-        "title": "Fizzbuzz",
+        "title": "FizzBuzz",
         "dates": "2021",
         "desctiption": "algorithm",
         "accomplishment": [
@@ -48,9 +48,14 @@
       }
     ],
     "education": [ {
-      "school": "Lorem University",
-      "major": "Computer Science (BS)",
-      "dates": "2023-present"
+      "title": "Lorem University",
+      "date": "2024",
+      "description": "Computer Science (BS)"
+    },
+    {
+      "title": "Ipsum Certification",
+      "date": "2023",
+      "description": ""
     }
-  ]
+    ]
   }
