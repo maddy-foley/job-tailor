@@ -1,6 +1,6 @@
 # Job Tailor
 
-written in JavaScript utilizing pdfkit.
+written in node.js and sqlite3 with pdfkit library.
 
 Goals: to create a pdf generator to help job seekers tailor their job applications. The current project will start as a commandline application.
 
