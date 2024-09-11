@@ -1,4 +1,4 @@
-import { checkFiles} from './queries.js';
+import { checkFiles, fetchData} from './queries.js';
 import { makePDF } from './document.js';
 
 

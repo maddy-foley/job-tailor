@@ -6,9 +6,12 @@ import { DIR_PATH_DB } from './constants.js';
 
 async function makeDatabase(db){
   try{
-    //const data = await fetchJSON();
+    const data = fetchData();
+    const profile = JSON.parse(data);
+
   //load db
     const db = new sqlite3.Database(DIR_PATH_DB);
+
     db.exec('PRAGMA foreign_keys = ON;');
     db.serialize(() => {
       db.run(`CREATE TABLE canidate (
@@ -25,7 +28,6 @@ async function makeDatabase(db){
         title TEXT NOT NULL,
         dates TEXT,
         description TEXT,
-        accomplishments TEXT,
         canid INTEGER NOT NULL,
         FOREIGN KEY(canid) REFERENCES canidate(canid) ON DELETE CASCADE
         )
@@ -58,32 +60,8 @@ async function makeDatabase(db){
         )
       `);
 
-      const canidate = db.prepare("INSERT INTO canidate (firstname, lastname, email, url) VALUES (?,?,?,?)");
-      canidate.run('text', 'test', 'test@test', 'test.test');
-      canidate.finalize();
+      insertData(db,profile);
 
-      const experience = db.prepare("INSERT INTO experience (title,dates,description,accomplishments,canid) VALUES (?,?,?,?,?)");
-      experience.run('work1', '2011-2020','worked', 'built database',1);
-      experience.finalize();
-
-      const accomplishment = db.prepare("INSERT INTO accomplishment (description, expid) VALUES (?,?)");
-      accomplishment.run('built database',1);
-      accomplishment.run('tested db',1);
-      accomplishment.finalize();
-
-      const education = db.prepare("INSERT INTO education (title,dates,description,canid) VALUES (?,?,?,?)");
-      education.run('work1', '2011-2020','worked',1);
-      education.finalize();
-
-      const languages = db.prepare("INSERT INTO language (name,canid) VALUES (?,?)");
-      languages.run('python', 1);
-      languages.run('java', 1);
-      languages.finalize();
-
-      const skills = db.prepare("INSERT INTO skill (name,canid) VALUES (?,?)");
-      skills.run('communication', 1);
-      skills.run('attention to details', 1);
-      skills.finalize();
 
       console.log('new database loaded');
     });
@@ -94,9 +72,45 @@ async function makeDatabase(db){
   }
 }
 
-async function fetchJSON(){
-  //const data = fetch('examplecanidate.json');
-  return {"data": data}
+function insertData(db,profile){
+
+  const canidate = db.prepare("INSERT INTO canidate (firstname, lastname, email, url) VALUES (?,?,?,?)");
+  canidate.run(profile.canidate.firstname, profile.canidate.lastname, profile.canidate.email, profile.canidate.url);
+  canidate.finalize();
+
+  const experience = db.prepare("INSERT INTO experience (title,dates,description,canid) VALUES (?,?,?,?)");
+  experience.run(profile.experience.title, profile.experience.dates,profile.experience.description,1);
+  experience.finalize();
+
+  const accomplishment = db.prepare("INSERT INTO accomplishment (description, expid) VALUES (?,?)");
+  accomplishment.run('built database',1);
+  accomplishment.run('tested db',1);
+  accomplishment.finalize();
+
+      const education = db.prepare("INSERT INTO education (title,dates,description,canid) VALUES (?,?,?,?)");
+      education.run('work1', '2011-2020','worked',1);
+      education.finalize();
+
+      const language = db.prepare("INSERT INTO language (name,canid) VALUES (?,?)");
+      language.run('python', 1);
+      language.run('java', 1);
+      language.finalize();
+
+      const skill = db.prepare("INSERT INTO skill (name,canid) VALUES (?,?)");
+      skill.run('communication', 1);
+      skill.run('attention to details', 1);
+      skill.finalize();
+
+}
+
+function fetchData(){
+  try{
+    const res = fs.readFileSync("./examplecanidate.json");
+    return res;
+  } catch (error) {
+    console.error(error);
+    return null;
+  }
 }
 
 async function checkFiles(){
@@ -112,10 +126,12 @@ async function checkFiles(){
   }
 }
 
-function updateDatabase(){
-  const db = new sqlite3.Database(DIR_PATH_DB);
+async function updateDatabase(){
+  //testing
+
+  // const db = new sqlite3.Database(DIR_PATH_DB);
   console.log('database updated');
 }
 
 
-export { checkFiles };
+export { checkFiles, fetchData };

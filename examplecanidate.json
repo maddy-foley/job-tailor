@@ -12,9 +12,9 @@
         "company": "Starting-Up Startup",
         "dates": "2024-present",
         "accomplishment": [
-          {"point": "Developed database schemas and wrote SQL queries to support data retrieval and manipulation needs."},
-          {"point": "Collaborated with senior developers on the design and implementation of RESTful APIs."},
-          {"point": "Assisted with unit testing to identify bugs and deliver high-quality code"}
+          "Developed database schemas and wrote SQL queries to support data retrieval and manipulation needs.",
+          "Collaborated with senior developers on the design and implementation of RESTful APIs.",
+          "Assisted with unit testing to identify bugs and deliver high-quality code"
         ]
       }
     ],
@@ -24,8 +24,8 @@
         "dates": "2022",
         "desctiption": "crm system",
         "accomplishment": [
-          {"point": "Developed a full-stack CRUD application for managing user data"},
-          {"point": "Created and implemented RESTful APIs to handle Create, Read, Update, and Delete operations"}
+          "Developed a full-stack CRUD application for managing user data",
+          "Created and implemented RESTful APIs to handle Create, Read, Update, and Delete operations"
         ]
       },
       {
@@ -33,8 +33,8 @@
         "dates": "2022",
         "desctiption": "commandline application to assist in building resumes",
         "accomplishment": [
-          {"point": "Designed a pdf generator that can update and save a user's resume - utilizing JavaScript libraries and SQLite3"},
-          {"point": "Built with scalability in mind."}
+          "Designed a pdf generator that can update and save a user's resume - utilizing JavaScript libraries and SQLite3",
+          "Built with scalability in mind."
         ]
       },
       {
@@ -42,8 +42,8 @@
         "dates": "2021",
         "desctiption": "algorithm",
         "accomplishment": [
-          {"point": "Illistrated a deep understanding of Data Structure and Algorithms"},
-          {"point": "Lorem ipsum dolor sit amet, consectetur adipiscing elit."}
+          "Illistrated a deep understanding of Data Structure and Algorithms",
+          "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
         ]
       }
     ],
@@ -55,7 +55,8 @@
     {
       "title": "Ipsum Certification",
       "date": "2023",
-      "description": ""
+      "description": "N/A"
     }
     ]
+
   }
