@@ -22,13 +22,22 @@ async function makeDatabase(db){
         url TEXT
         )
         `);
+      db.run(`CREATE TABLE type (
+          name TEXT,
+          typeid INTEGER PRIMARY KEY,
+          FOREIGN KEY(typeid) REFERENCES type(typeid) ON DELETE CASCADE
+        )
+        `);
+
 
       db.run(`CREATE TABLE experience (
         expid INTEGER PRIMARY KEY,
         title TEXT NOT NULL,
         dates TEXT,
         description TEXT,
+        typeid INTEGER NOT NULL,
         canid INTEGER NOT NULL,
+        FOREIGN KEY(typeid) REFERENCES type(typeid) ON DELETE CASCADE
         FOREIGN KEY(canid) REFERENCES canidate(canid) ON DELETE CASCADE
         )
       `);
@@ -48,8 +57,10 @@ async function makeDatabase(db){
         )
       `);
       db.run(`CREATE TABLE language (
+        langid INTEGER PRIMARY KEY,
         name TEXT NOT NULL,
         canid INTEGER NOT NULL,
+        FOREIGN KEY(langid) REFERENCES experience(expid) ON DELETE CASCADE
         FOREIGN KEY(canid) REFERENCES canidate(canid) ON DELETE CASCADE
         )
       `);
@@ -73,33 +84,34 @@ async function makeDatabase(db){
 }
 
 function insertData(db,profile){
+    // const {canidate, education,lagnaguage} = profile;
 
-  const canidate = db.prepare("INSERT INTO canidate (firstname, lastname, email, url) VALUES (?,?,?,?)");
-  canidate.run(profile.canidate.firstname, profile.canidate.lastname, profile.canidate.email, profile.canidate.url);
-  canidate.finalize();
+    // const can = db.prepare("INSERT INTO canidate (firstname, lastname, email, url) VALUES (?,?,?,?)");
+    // can.run(canidate.firstname, canidate.lastname, canidate.email, canidate.url);
+    // can.finalize();
 
-  const experience = db.prepare("INSERT INTO experience (title,dates,description,canid) VALUES (?,?,?,?)");
-  experience.run(profile.experience.title, profile.experience.dates,profile.experience.description,1);
-  experience.finalize();
+    // const exp = db.prepare("INSERT INTO experience (title,dates,description,canid) VALUES (?,?,?,?)");
+    // exp.run(experience.title, experience.dates, experience.description, 1);
+    // exp.finalize();
 
-  const accomplishment = db.prepare("INSERT INTO accomplishment (description, expid) VALUES (?,?)");
-  accomplishment.run('built database',1);
-  accomplishment.run('tested db',1);
-  accomplishment.finalize();
+    // const accomplishment = db.prepare("INSERT INTO accomplishment (description, expid) VALUES (?,?)");
 
-      const education = db.prepare("INSERT INTO education (title,dates,description,canid) VALUES (?,?,?,?)");
-      education.run('work1', '2011-2020','worked',1);
-      education.finalize();
+    // accomplishment.run('tested db',1);
+    // accomplishment.finalize();
 
-      const language = db.prepare("INSERT INTO language (name,canid) VALUES (?,?)");
-      language.run('python', 1);
-      language.run('java', 1);
-      language.finalize();
+    // const edu = db.prepare("INSERT INTO education (title,dates,description,canid) VALUES (?,?,?,?)");
+    // edu.run('work1', '2011-2020','worked',1);
+    // edu.finalize();
 
-      const skill = db.prepare("INSERT INTO skill (name,canid) VALUES (?,?)");
-      skill.run('communication', 1);
-      skill.run('attention to details', 1);
-      skill.finalize();
+    // const language = db.prepare("INSERT INTO language (name,canid) VALUES (?,?)");
+    // language.run('python', 1);
+    // language.run('java', 1);
+    // language.finalize();
+
+    // const skill = db.prepare("INSERT INTO skill (name,canid) VALUES (?,?)");
+    // skill.run('communication', 1);
+    // skill.run('attention to details', 1);
+    // skill.finalize();
 
 }
 

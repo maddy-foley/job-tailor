@@ -47,6 +47,9 @@
         ]
       }
     ],
+    "language": {
+      "name": "python"
+    },
     "education": [ {
       "title": "Lorem University",
       "date": "2024",
