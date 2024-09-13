@@ -6,23 +6,23 @@
         "email": "jdoe@fakeemail",
         "url": "https://www.linkedin.com/"
     },
-    "job": [
+    "experience": [
       {
         "title": "Software Engineer I",
         "company": "Starting-Up Startup",
         "dates": "2024-present",
+        "type": "job",
         "accomplishment": [
           "Developed database schemas and wrote SQL queries to support data retrieval and manipulation needs.",
           "Collaborated with senior developers on the design and implementation of RESTful APIs.",
           "Assisted with unit testing to identify bugs and deliver high-quality code"
         ]
-      }
-    ],
-    "project": [
+      },
       {
         "title": "CRUDi Management",
         "dates": "2022",
         "desctiption": "crm system",
+        "type": "project",
         "accomplishment": [
           "Developed a full-stack CRUD application for managing user data",
           "Created and implemented RESTful APIs to handle Create, Read, Update, and Delete operations"
@@ -32,6 +32,7 @@
         "title": "Resume Builder",
         "dates": "2022",
         "desctiption": "commandline application to assist in building resumes",
+        "type": "project",
         "accomplishment": [
           "Designed a pdf generator that can update and save a user's resume - utilizing JavaScript libraries and SQLite3",
           "Built with scalability in mind."
@@ -41,15 +42,29 @@
         "title": "FizzBuzz",
         "dates": "2021",
         "desctiption": "algorithm",
+        "type": "project",
         "accomplishment": [
           "Illistrated a deep understanding of Data Structure and Algorithms",
           "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
         ]
       }
     ],
-    "language": {
+
+    "skill":[{
+      "name": "front-end"
+    },
+    {
+      "name": "back-end"
+    }
+
+    ],
+    "language": [{
       "name": "python"
     },
+    {
+      "name": "Java"
+    }
+    ],
     "education": [ {
       "title": "Lorem University",
       "date": "2024",
