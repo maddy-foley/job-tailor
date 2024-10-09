@@ -1,5 +1,26 @@
-/pdf
-/node_modules
-/data
-draft.js
-canidateinput.json
+.idea/
+
+# Compiled class files
+*.class
+
+# Package files
+*.jar
+*.war
+*.ear
+
+# Target directory
+target/
+
+# IDE-specific files
+.idea/
+.classpath
+.project
+
+# Log files
+*.log
+
+# Maven artifacts
+.m2/repository/
+
+# Hidden files
+.DS_Store
