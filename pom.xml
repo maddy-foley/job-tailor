@@ -6,17 +6,20 @@
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
 		<version>3.3.4</version>
-		<relativePath/> <!-- lookup parent from repository -->
+		<relativePath/>
 	</parent>
-	<groupId>com.example</groupId>
+	<groupId>com.example.job-tailor</groupId>
 	<artifactId>job-tailor</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
-	<name>job-tailor</name>
-	<description>Demo project for Spring Boot</description>
+	<version>3.3.4</version>
+	<packaging>pom</packaging>
+	<modules>
+		<module>backend</module>
+	</modules>
 	<url/>
 	<licenses>
 		<license/>
 	</licenses>
+
 	<developers>
 		<developer/>
 	</developers>
@@ -63,5 +66,4 @@
 			<scope>test</scope>
 		</dependency>
 	</dependencies>
-
 </project>

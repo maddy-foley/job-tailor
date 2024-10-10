@@ -1,0 +1,8 @@
+<project>
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>com.example.job-tailor</groupId>
+    <artifactId>backend</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+    <name>job-tailor</name>
+    <description>Demo project for Spring Boot</description>
+</project>
