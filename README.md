@@ -1,6 +1,6 @@
 # Job Tailor *CURRENTLY UNDER REWRITE TO JAVA*
 
-> **Intent:** To develop a full-stack application to assist job-seekers build their resume quickly
+> **Intent:** To develop a full-stack application to help job-seekers build their resume quickly
 > 
 > **Tools:** Java Spring Boot (REST), Docker, PostgresSQL
 > 
