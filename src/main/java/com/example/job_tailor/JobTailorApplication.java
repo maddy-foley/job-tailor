@@ -8,5 +8,4 @@ public class JobTailorApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(JobTailorApplication.class, args);
 	}
-
 }
