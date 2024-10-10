@@ -1,16 +1,3 @@
-.idea/
-
-# Compiled class files
-*.class
-
-# Package files
-*.jar
-*.war
-*.ear
-
-# Target directory
-target/
-
 # IDE-specific files
 .idea/
 .classpath
