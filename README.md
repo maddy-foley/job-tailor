@@ -7,5 +7,5 @@
 > **TBD Goals:** Front End framework selection, Python or Node to make PDF (either with a library or as a microservice), ChatGPT integration to help match skills, Deployment to cloud
 
 ## Draft of Relational Database Design:
-![Database Diagram](./src/main/resources/JobTailorDatabaseDiagram.png)
+![Database Diagram](./photos/JobTailorDatabaseDiagram.png)
 
