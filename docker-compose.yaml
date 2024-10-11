@@ -1,4 +1,9 @@
 services:
+  server:
+    build: ./backend
+    image: app
+    ports:
+      - "8080:8080"
   db:
     image: 'postgres:latest'
     environment:
@@ -9,12 +14,12 @@ services:
       - '5432:5432'
     volumes:
       - 'data:/var/lib/postgresql/data'
-  rabbitmq:
-    image: 'rabbitmq:latest'
-    environment:
-      - 'RABBITMQ_DEFAULT_PASS=secret'
-      - 'RABBITMQ_DEFAULT_USER=myuser'
-    ports:
-      - '5672'
+#  rabbitmq:
+#    image: 'rabbitmq:latest'
+#    environment:
+#      - 'RABBITMQ_DEFAULT_PASS=secret'
+#      - 'RABBITMQ_DEFAULT_USER=myuser'
+#    ports:
+#      - '5672'
 volumes:
   data:
