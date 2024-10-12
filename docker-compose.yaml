@@ -4,16 +4,16 @@ services:
     image: app
     ports:
       - "8080:8080"
+    depends_on:
+      - db
   client:
     build: ./frontend
     ports:
       - "4200:80"
   db:
     image: 'postgres:latest'
-    environment:
-      - 'POSTGRES_DB=db'
-      - 'POSTGRES_PASSWORD=your_password'
-      - 'POSTGRES_USER=your_username'
+    env_file: '.env'
+    restart: 'always'
     ports:
       - '5432:5432'
     volumes:
