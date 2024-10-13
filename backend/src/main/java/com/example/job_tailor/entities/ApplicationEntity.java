@@ -25,5 +25,5 @@ public class ApplicationEntity {
     private Date DateUpdated;
     private String JobPost;
 
-    //skill connection, canididate connection
+    //skill connection, canididate connection, enum
 }
