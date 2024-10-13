@@ -14,15 +14,16 @@ import java.util.Date;
 @Getter
 @Setter
 @Entity
-@Table(name = "Candidates")
-public class CandidateEntity {
+@Table(name = "Applications")
+public class ApplicationEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long CandidateID;
-    private String FirstName;
-    private String MiddleName;
-    private String LastName;
+    private Long ApplicationID;
+    private String Company; // maybe turn to FK
+    private String Name;
     private Date DateCreated;
     private Date DateUpdated;
-    //address
+    private String JobPost;
+
+    //skill connection, canididate connection
 }

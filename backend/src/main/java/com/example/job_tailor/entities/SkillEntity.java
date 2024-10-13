@@ -1,5 +1,6 @@
 package com.example.job_tailor.entities;
 
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
@@ -8,21 +9,18 @@ import jakarta.persistence.GenerationType;
 import lombok.Getter;
 import lombok.Setter;
 
-import java.math.BigInteger;
-import java.util.Date;
+
 
 @Getter
 @Setter
 @Entity
-@Table(name = "Candidates")
-public class CandidateEntity {
+@Table(name = "Skills")
+public class SkillEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long CandidateID;
-    private String FirstName;
-    private String MiddleName;
-    private String LastName;
-    private Date DateCreated;
-    private Date DateUpdated;
-    //address
+    private Long SkillID;
+    private String Name;
+    private Integer YOE;
+    private Integer Ability; // self-rating out of 5
+    //candidate connection, category (many to many) connection, application connection
 }

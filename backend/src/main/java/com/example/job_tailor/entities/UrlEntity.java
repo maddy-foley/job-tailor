@@ -1,5 +1,4 @@
 package com.example.job_tailor.entities;
-
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
@@ -14,15 +13,10 @@ import java.util.Date;
 @Getter
 @Setter
 @Entity
-@Table(name = "Candidates")
-public class CandidateEntity {
+@Table(name = "Urls")
+public class UrlEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long CandidateID;
-    private String FirstName;
-    private String MiddleName;
-    private String LastName;
-    private Date DateCreated;
-    private Date DateUpdated;
-    //address
+    private Long UrlID;
+    private String Url;
 }

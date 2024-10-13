@@ -8,21 +8,18 @@ import jakarta.persistence.GenerationType;
 import lombok.Getter;
 import lombok.Setter;
 
-import java.math.BigInteger;
 import java.util.Date;
+
 
 @Getter
 @Setter
 @Entity
-@Table(name = "Candidates")
-public class CandidateEntity {
+@Table(name = "Categories")
+public class CategoryEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long CandidateID;
-    private String FirstName;
-    private String MiddleName;
-    private String LastName;
-    private Date DateCreated;
-    private Date DateUpdated;
-    //address
+    private Long CategoryID;
+    private String Name;
+
+    //skill (many to many) connection
 }

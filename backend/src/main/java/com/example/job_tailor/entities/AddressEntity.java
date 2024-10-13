@@ -14,4 +14,8 @@ public class AddressEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long AddressID;
+    private String Email;
+    private String Phone;
+    private String StreetAddress;
+    //city, zipcode, country, state, candidate, url
 }

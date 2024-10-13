@@ -8,21 +8,21 @@ import jakarta.persistence.GenerationType;
 import lombok.Getter;
 import lombok.Setter;
 
-import java.math.BigInteger;
 import java.util.Date;
+
 
 @Getter
 @Setter
 @Entity
-@Table(name = "Candidates")
-public class CandidateEntity {
+@Table(name = "Experiences")
+public class ExperienceEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long CandidateID;
-    private String FirstName;
-    private String MiddleName;
-    private String LastName;
-    private Date DateCreated;
-    private Date DateUpdated;
-    //address
+    private Long ExperienceID;
+    private String Name;
+    private String Establishment;
+    private String Description;
+    private Date StartDate;
+    private Date EndDate;
+    //accomplishment, type connection, candidate, url
 }
