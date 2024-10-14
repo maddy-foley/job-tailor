@@ -8,7 +8,6 @@ import java.util.Date;
 
 @Getter
 @Setter
-@PersistenceContext
 @Entity
 @Table(name = "Addresses")
 public class AddressEntity {

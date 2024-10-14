@@ -10,7 +10,6 @@ import java.util.Date;
 @Getter
 @Setter
 @Entity
-@PersistenceContext
 @Table(name = "Applications")
 public class ApplicationEntity {
     @Id

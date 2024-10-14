@@ -9,7 +9,6 @@ import java.util.Date;
 @Getter
 @Setter
 @Entity
-@PersistenceContext
 @Table(name = "Urls")
 public class UrlEntity {
     @Id

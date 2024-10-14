@@ -10,7 +10,6 @@ import lombok.Setter;
 @Getter
 @Setter
 @Entity
-@PersistenceContext
 @Table(name = "Skills")
 public class SkillEntity {
     @Id

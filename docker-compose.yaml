@@ -10,10 +10,10 @@ services:
     build: ./frontend
     ports:
       - "4200:80"
-  db:
-    build: ./database
-    restart: 'always'
-    ports:
+#  db:
+#    build: ./database
+#    restart: 'always'
+#    ports:
       - '5432:5432'
 #    volumes:
 #      - 'data:/var/lib/postgresql/data'
