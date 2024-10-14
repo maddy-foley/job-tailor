@@ -4,6 +4,6 @@ import com.example.job_tailor.entities.UrlEntity;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.web.bind.annotation.CrossOrigin;
 
-@CrossOrigin("http://localhost:8080/url")
+@CrossOrigin("http://localhost:8080")
 public interface UrlRepo extends CrudRepository<UrlEntity, Long> {
 }
