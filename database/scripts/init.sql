@@ -25,8 +25,8 @@ CREATE TABLE addresses (
     zip_code INTEGER,
     state VARCHAR(20),
     country VARCHAR(30),
-    fk_candidate_id INTEGER NOT NULL REFERENCES candidates(candidate_id) ON DELETE CASCADE,
-    fk_url_id INTEGER REFERENCES urls(url_id)
+    candidate_id INTEGER NOT NULL REFERENCES candidates(candidate_id) ON DELETE CASCADE,
+    url_id INTEGER REFERENCES urls(url_id)
 );
 
 DROP TABLE IF EXISTS types;
@@ -45,9 +45,9 @@ CREATE TABLE IF NOT EXISTS experiences (
     description VARCHAR(50),
     start_date DATE,
     end_date DATE,
-    fk_type_id INTEGER REFERENCES types(type_id),
-    fk_candidate_id INTEGER NOT NULL REFERENCES candidates(candidate_id) ON DELETE CASCADE,
-    fk_url_id INTEGER REFERENCES urls(url_id)
+    type_id INTEGER REFERENCES types(type_id),
+    candidate_id INTEGER NOT NULL REFERENCES candidates(candidate_id) ON DELETE CASCADE,
+    url_id INTEGER REFERENCES urls(url_id)
 );
 
 DROP TABLE IF EXISTS accomplishments;
@@ -55,7 +55,7 @@ DROP TABLE IF EXISTS accomplishments;
 CREATE TABLE IF NOT EXISTS accomplishments(
     accomplishment_id SERIAL PRIMARY KEY,
     description VARCHAR(50),
-    fk_experience_id INTEGER NOT NULL REFERENCES experiences(experience_id)
+    experience_id INTEGER NOT NULL REFERENCES experiences(experience_id)
 );
 
 DROP TABLE IF EXISTS applications;
@@ -69,7 +69,7 @@ CREATE TABLE IF NOT EXISTS applications(
     job_post TEXT,
     notes TEXT,
     status INTEGER,
-    fk_candidate_id INTEGER NOT NULL REFERENCES candidates(candidate_id) ON DELETE CASCADE
+    candidate_id INTEGER NOT NULL REFERENCES candidates(candidate_id) ON DELETE CASCADE
 );
 
 DROP TABLE IF EXISTS skills;
@@ -79,8 +79,8 @@ CREATE TABLE IF NOT EXISTS skills(
     name VARCHAR(20),
     ability INTEGER,
     years_of_experience INTEGER,
-    fk_candidate_id INTEGER REFERENCES candidates(candidate_id) ON DELETE CASCADE,
-    fk_application_id INTEGER REFERENCES applications(application_id) ON DELETE CASCADE
+    candidate_id INTEGER REFERENCES candidates(candidate_id) ON DELETE CASCADE,
+    application_id INTEGER REFERENCES applications(application_id) ON DELETE CASCADE
 );
 
 DROP TABLE IF EXISTS categories;
@@ -94,6 +94,6 @@ DROP TABLE IF EXISTS skill_categories;
 
 CREATE TABLE IF NOT EXISTS skill_categories(
     id SERIAL PRIMARY KEY,
-    fk_category_id INTEGER REFERENCES categories(category_id) ON DELETE CASCADE,
-    fk_skill_id INTEGER REFERENCES skills(skill_id) ON DELETE CASCADE
+    category_id INTEGER REFERENCES categories(category_id) ON DELETE CASCADE,
+    skill_id INTEGER REFERENCES skills(skill_id) ON DELETE CASCADE
 );
