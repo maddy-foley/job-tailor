@@ -42,7 +42,7 @@ public class AddressEntity {
     private CandidateEntity candidate;
 
     //might need to change
-    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @OneToMany(fetch = FetchType.EAGER)
     @JoinColumn(name = "url_id")
     private List<UrlEntity> urls = new ArrayList<>();
     AddressEntity(){}
