@@ -1,18 +1,15 @@
-package com.example.job_tailor.entities;
+package com.example.job_tailor.api.entity;
 
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NonNull;
 import lombok.Setter;
 
-import java.math.BigInteger;
-import java.util.Date;
-
 @Getter
 @Setter
 @Entity
 @Table(name = "accomplishments")
-public class AccomplishmentEntity {
+public class Accomplishment {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "accomplishment_id")
@@ -21,5 +18,4 @@ public class AccomplishmentEntity {
     @NonNull
     @Column(name = "description")
     private String Description;
-    //experience connection
 }

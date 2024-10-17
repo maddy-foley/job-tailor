@@ -1,10 +1,10 @@
-package com.example.job_tailor.repositories;
+package com.example.job_tailor.repository;
 
-import com.example.job_tailor.entities.ApplicationEntity;
+import com.example.job_tailor.api.entity.Application;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.web.bind.annotation.CrossOrigin;
 
 //needs change, look at Pagination
 @CrossOrigin("http://localhost:8080")
-public interface ApplicationRepo extends CrudRepository<ApplicationEntity, Long> {
+public interface ApplicationRepo extends CrudRepository<Application, Long> {
 }

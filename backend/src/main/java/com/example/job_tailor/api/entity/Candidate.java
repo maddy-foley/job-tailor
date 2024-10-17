@@ -1,20 +1,18 @@
-package com.example.job_tailor.entities;
+package com.example.job_tailor.api.entity;
 
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NonNull;
 import lombok.Setter;
-import org.antlr.v4.runtime.misc.NotNull;
 
-import java.math.BigInteger;
 import java.time.LocalDate;
-import java.util.Date;
+import java.util.List;
 
 @Getter
 @Setter
 @Entity
 @Table(name = "candidates")
-public class CandidateEntity {
+public class Candidate {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "candidate_id")
@@ -38,8 +36,12 @@ public class CandidateEntity {
     @NonNull
     @Column(name = "date_updated")
     private LocalDate DateUpdated;
-    public CandidateEntity(){}
-    public CandidateEntity(@NonNull String firstName, String middleName, @NonNull String lastName){
+
+    @ManyToMany
+    @JoinColumn(name = "skill_id", nullable = false)
+    List<Skill> skills;
+    public Candidate(){}
+    public Candidate(@NonNull String firstName, String middleName, @NonNull String lastName){
         this.FirstName = firstName;
         // might need to change
         this.MiddleName = middleName;

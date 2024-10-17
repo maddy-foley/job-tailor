@@ -2,8 +2,8 @@
 <project>
     <modelVersion>4.0.0</modelVersion>
     <parent>
-        <groupId>com.example.job_tailor</groupId>
-        <artifactId>app</artifactId>
+        <groupId>com.example</groupId>
+        <artifactId>job_tailor</artifactId>
         <version>3.3.4</version>
         <relativePath>../../job-tailor</relativePath>
     </parent>

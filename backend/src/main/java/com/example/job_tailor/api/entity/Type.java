@@ -1,21 +1,20 @@
-package com.example.job_tailor.entities;
+package com.example.job_tailor.api.entity;
 import jakarta.persistence.*;
 import lombok.Getter;
+import lombok.NonNull;
 import lombok.Setter;
-
-import java.math.BigInteger;
-import java.util.Date;
 
 @Getter
 @Setter
 @Entity
 @Table(name = "types")
-public class TypeEntity {
+public class Type {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "type_id")
     private Long TypeID;
 
+    @NonNull
     @Column(name = "name")
     private String Name;
 }

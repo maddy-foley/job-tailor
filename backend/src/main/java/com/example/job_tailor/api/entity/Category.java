@@ -1,18 +1,16 @@
-package com.example.job_tailor.entities;
+package com.example.job_tailor.api.entity;
 
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NonNull;
 import lombok.Setter;
 
-import java.util.Date;
-
 
 @Getter
 @Setter
 @Entity
 @Table(name = "categories")
-public class CategoryEntity {
+public class Category {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "category_id")

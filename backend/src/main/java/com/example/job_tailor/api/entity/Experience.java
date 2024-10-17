@@ -1,4 +1,4 @@
-package com.example.job_tailor.entities;
+package com.example.job_tailor.api.entity;
 
 import jakarta.persistence.*;
 import lombok.Getter;
@@ -7,14 +7,13 @@ import lombok.Setter;
 
 import java.time.LocalDate;
 import java.util.List;
-import java.util.Date;
 
 
 @Getter
 @Setter
 @Entity
 @Table(name = "experiences")
-public class ExperienceEntity {
+public class Experience {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "experience_id")
@@ -40,17 +39,19 @@ public class ExperienceEntity {
     // don't cascade delete type
     @ManyToOne
     @JoinColumn(name="type_id", nullable = false)
-    TypeEntity type;
+    Type type;
 
     @OneToMany(fetch = FetchType.EAGER)
     @JoinColumn(name="accomplishment_id", nullable = false)
-    List<AccomplishmentEntity> accomplishments;
+    List<Accomplishment> accomplishments;
 
     @ManyToOne
     @JoinColumn(name = "candidate_id", nullable = false)
-    CandidateEntity candidate;
+    Candidate candidate;
 
     @OneToMany(fetch = FetchType.EAGER)
     @JoinColumn(name="url_id", nullable = false)
-    List<UrlEntity> urls;
+    List<Url> urls;
+
+    private Status status;
 }
