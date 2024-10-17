@@ -15,9 +15,11 @@ import java.util.Date;
 public class AccomplishmentEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "accomplishment_id")
     private Long AccomplishmentID;
 
     @NonNull
+    @Column(name = "description")
     private String Description;
     //experience connection
 }

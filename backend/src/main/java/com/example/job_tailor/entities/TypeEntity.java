@@ -9,11 +9,13 @@ import java.util.Date;
 @Getter
 @Setter
 @Entity
-@Table(name = "Types")
+@Table(name = "types")
 public class TypeEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "type_id")
     private Long TypeID;
+
+    @Column(name = "name")
     private String Name;
-    //experience connection
 }

@@ -13,21 +13,28 @@ import java.util.Date;
 @Getter
 @Setter
 @Entity
-@Table(name = "Experiences")
+@Table(name = "experiences")
 public class ExperienceEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "experience_id")
     private Long ExperienceID;
 
     @NonNull
+    @Column(name = "name")
     private String Name;
     //nullable
+    @Column(name = "establishment")
     private String Establishment;
+
     @NonNull
+    @Column(name = "description")
     private String Description;
 
+    @Column(name = "start_date")
     private LocalDate StartDate;
 
+    @Column(name = "end_date")
     private LocalDate EndDate;
 
     // don't cascade delete type

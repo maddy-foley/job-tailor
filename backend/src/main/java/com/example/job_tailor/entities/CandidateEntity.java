@@ -17,20 +17,26 @@ import java.util.Date;
 public class CandidateEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "candidate_id")
     private Long CandidateID;
 
     @NonNull
+    @Column(name = "first_name")
     private String FirstName;
 
+    @Column(name = "middle_name")
     private String MiddleName;
 
     @NonNull
+    @Column(name = "last_name")
     private String LastName;
 
     @NonNull
+    @Column(name = "date_created")
     private LocalDate DateCreated;
 
     @NonNull
+    @Column(name = "date_updated")
     private LocalDate DateUpdated;
     public CandidateEntity(){}
     public CandidateEntity(@NonNull String firstName, String middleName, @NonNull String lastName){

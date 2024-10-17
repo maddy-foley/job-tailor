@@ -16,25 +16,34 @@ import java.util.List;
 public class AddressEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "address_id")
     private Long AddressID;
 
     @NonNull
+    @Column(name = "email")
     private String Email;
+
     @NonNull
+    @Column(name = "phone")
     private String Phone;
 
+    @Column(name = "street_address")
     private String StreetAddress;
 
     @NonNull
+    @Column(name = "city")
     private String City;
 
     @NonNull
+    @Column(name = "zip_code")
     private Integer ZipCode;
 
     @NonNull
+    @Column(name = "country")
     private String Country;
 
     @NonNull
+    @Column(name = "state")
     private String State;
 
     @OneToOne
@@ -45,6 +54,6 @@ public class AddressEntity {
     @OneToMany(fetch = FetchType.EAGER)
     @JoinColumn(name = "url_id")
     private List<UrlEntity> urls = new ArrayList<>();
-    AddressEntity(){}
-
+    public AddressEntity() {
+    }
 }
