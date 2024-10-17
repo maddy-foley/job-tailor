@@ -5,6 +5,8 @@ import lombok.Getter;
 import lombok.NonNull;
 import lombok.Setter;
 
+import java.util.List;
+
 
 @Getter
 @Setter
@@ -20,5 +22,4 @@ public class Category {
     @Column(name = "name")
     private String Name;
 
-    //skill (many to many) connection
 }

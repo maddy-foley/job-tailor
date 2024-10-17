@@ -53,6 +53,4 @@ public class Address {
     @OneToMany(fetch = FetchType.EAGER)
     @JoinColumn(name = "url_id")
     private List<Url> urls = new ArrayList<>();
-    public Address() {
-    }
 }

@@ -4,8 +4,11 @@ import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NonNull;
 import lombok.Setter;
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
 
 import java.time.LocalDate;
+import java.util.Date;
 import java.util.List;
 
 @Getter
@@ -30,12 +33,13 @@ public class Candidate {
     private String LastName;
 
     @NonNull
+    @CreationTimestamp
     @Column(name = "date_created")
-    private LocalDate DateCreated;
+    private Date DateCreated;
 
-    @NonNull
+    @UpdateTimestamp
     @Column(name = "date_updated")
-    private LocalDate DateUpdated;
+    private Date DateUpdated;
 
     @ManyToMany
     @JoinTable(
@@ -44,13 +48,4 @@ public class Candidate {
         inverseJoinColumns = @JoinColumn(name = "skill_id")
     )
     List<Skill> skills;
-    public Candidate(){}
-    public Candidate(@NonNull String firstName, String middleName, @NonNull String lastName){
-        this.FirstName = firstName;
-        // might need to change
-        this.MiddleName = middleName;
-        this.LastName = lastName;
-        this.DateCreated = LocalDate.now();
-        this.DateUpdated = LocalDate.now();
-    }
 }

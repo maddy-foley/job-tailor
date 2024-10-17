@@ -6,6 +6,8 @@ import lombok.Getter;
 import lombok.NonNull;
 import lombok.Setter;
 
+import java.util.List;
+
 
 @Getter
 @Setter
@@ -27,6 +29,11 @@ public class Skill {
     @Column(name = "ability")
     private Integer Ability; // self-rating out of 5
 
-    //put skills on candidate entity instead? Maybe seperate table?
-    //candidate connection, category (many to many) connection, application connection
+    @ManyToMany
+    @JoinTable(
+        name = "skill_categories",
+        joinColumns = @JoinColumn(name = "skill_id"),
+        inverseJoinColumns = @JoinColumn(name = "category_id")
+    )
+    List<Category> categories;
 }
