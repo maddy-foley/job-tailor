@@ -44,7 +44,11 @@ public class Application {
     Candidate candidate;
 
     @ManyToMany
-    @JoinColumn(name = "skill_id", nullable = false)
+    @JoinTable(
+        name = "application_skills",
+        joinColumns = @JoinColumn(name = "application_id"),
+        inverseJoinColumns = @JoinColumn(name = "skill_id")
+    )
     List<Skill> skills;
     public Application(String Company, String Name, String JobPost){
         this.Company = Company;

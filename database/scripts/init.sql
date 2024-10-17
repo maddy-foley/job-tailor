@@ -78,9 +78,7 @@ CREATE TABLE IF NOT EXISTS skills(
     skill_id SERIAL PRIMARY KEY,
     name VARCHAR(20),
     ability INTEGER,
-    years_of_experience INTEGER,
-    candidate_id INTEGER REFERENCES candidates(candidate_id) ON DELETE CASCADE,
-    application_id INTEGER REFERENCES applications(application_id) ON DELETE CASCADE
+    years_of_experience INTEGER
 );
 
 DROP TABLE IF EXISTS categories;
@@ -96,4 +94,20 @@ CREATE TABLE IF NOT EXISTS skill_categories(
     id SERIAL PRIMARY KEY,
     category_id INTEGER REFERENCES categories(category_id) ON DELETE CASCADE,
     skill_id INTEGER REFERENCES skills(skill_id) ON DELETE CASCADE
+);
+
+DROP TABLE IF EXISTS application_skillss;
+
+CREATE TABLE IF NOT EXISTS application_skills(
+   id SERIAL PRIMARY KEY,
+   application_id INTEGER REFERENCES applications(application_id) ON DELETE CASCADE,
+   skill_id INTEGER REFERENCES skills(skill_id) ON DELETE CASCADE
+);
+
+DROP TABLE IF EXISTS candidate_skills;
+
+CREATE TABLE IF NOT EXISTS candidate_skills(
+     id SERIAL PRIMARY KEY,
+     candidate_id INTEGER REFERENCES candidates(candidate_id) ON DELETE CASCADE,
+     skill_id INTEGER REFERENCES skills(skill_id) ON DELETE CASCADE
 );

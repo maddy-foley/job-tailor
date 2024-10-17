@@ -24,3 +24,5 @@ exec command for opening postgres in docker:
 ```
 psql -h localhost -U myuser -d mydb
 ```
+
+ CURRENTLY CASCADES ARE WRONG - double check!

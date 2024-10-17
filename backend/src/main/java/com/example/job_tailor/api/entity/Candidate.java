@@ -38,7 +38,11 @@ public class Candidate {
     private LocalDate DateUpdated;
 
     @ManyToMany
-    @JoinColumn(name = "skill_id", nullable = false)
+    @JoinTable(
+        name = "candidate_skills",
+        joinColumns = @JoinColumn(name = "candidate_id"),
+        inverseJoinColumns = @JoinColumn(name = "skill_id")
+    )
     List<Skill> skills;
     public Candidate(){}
     public Candidate(@NonNull String firstName, String middleName, @NonNull String lastName){
