@@ -1,4 +1,4 @@
-package com.example.job_tailor.api.entity;
+package com.example.job_tailor.model;
 
 import jakarta.persistence.*;
 import lombok.Getter;
@@ -16,7 +16,7 @@ import java.util.List;
 public class Experience {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "experience_id")
+    @Column(name = "experience_id", columnDefinition = "serial")
     private Long ExperienceID;
 
     @NonNull
@@ -53,5 +53,4 @@ public class Experience {
     @JoinColumn(name="url_id", nullable = false)
     List<Url> urls;
 
-    private Status status;
 }

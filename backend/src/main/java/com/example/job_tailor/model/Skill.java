@@ -1,4 +1,4 @@
-package com.example.job_tailor.api.entity;
+package com.example.job_tailor.model;
 
 
 import jakarta.persistence.*;
@@ -6,6 +6,7 @@ import lombok.Getter;
 import lombok.NonNull;
 import lombok.Setter;
 
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -16,7 +17,7 @@ import java.util.List;
 public class Skill {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "skill_id")
+    @Column(name = "skill_id", columnDefinition = "serial")
     private Long SkillID;
 
     @NonNull
@@ -35,5 +36,5 @@ public class Skill {
         joinColumns = @JoinColumn(name = "skill_id"),
         inverseJoinColumns = @JoinColumn(name = "category_id")
     )
-    List<Category> categories;
+    List<Category> categories = new ArrayList<>();;
 }

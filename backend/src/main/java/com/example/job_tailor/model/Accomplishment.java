@@ -1,4 +1,4 @@
-package com.example.job_tailor.api.entity;
+package com.example.job_tailor.model;
 
 import jakarta.persistence.*;
 import lombok.Getter;
@@ -12,7 +12,7 @@ import lombok.Setter;
 public class Accomplishment {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "accomplishment_id")
+    @Column(name = "accomplishment_id", columnDefinition = "serial")
     private Long AccomplishmentID;
 
     @NonNull

@@ -1,4 +1,4 @@
-package com.example.job_tailor.api.entity;
+package com.example.job_tailor.model;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NonNull;
@@ -11,7 +11,7 @@ import lombok.Setter;
 public class Type {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "type_id")
+    @Column(name = "type_id", columnDefinition = "serial")
     private Long TypeID;
 
     @NonNull

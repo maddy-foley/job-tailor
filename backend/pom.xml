@@ -8,9 +8,9 @@
         <relativePath>../../job-tailor</relativePath>
     </parent>
 
-<!--    <groupId>com.example.job_tailor</groupId>-->
+    <groupId>com.example.job_tailor</groupId>
     <artifactId>JobTailorApplication</artifactId>
-<!--    <version>0.0.1-SNAPSHOT</version>-->
+    <version>0.0.1-SNAPSHOT</version>
     <packaging>jar</packaging>
     <name>backend</name>
     <description>Demo project for Spring Boot</description>
@@ -69,8 +69,17 @@
             <artifactId>spring-boot-starter-data-rest</artifactId>
         </dependency>
         <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
+        <dependency>
             <groupId>org.junit.jupiter</groupId>
             <artifactId>junit-jupiter</artifactId>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
             <scope>test</scope>
         </dependency>
     </dependencies>

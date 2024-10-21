@@ -1,4 +1,4 @@
-package com.example.job_tailor.api.entity;
+package com.example.job_tailor.model;
 
 import jakarta.persistence.*;
 import lombok.Getter;
@@ -7,6 +7,7 @@ import lombok.Setter;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -17,7 +18,7 @@ import java.util.List;
 public class Application {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "application_id")
+    @Column(name = "application_id", columnDefinition = "serial")
     private Long ApplicationID;
 
     @NonNull
@@ -49,10 +50,9 @@ public class Application {
         joinColumns = @JoinColumn(name = "application_id"),
         inverseJoinColumns = @JoinColumn(name = "skill_id")
     )
-    List<Skill> skills;
-    public Application(String Company, String Name, String JobPost){
-        this.Company = Company;
-        this.Name = Name;
-        this.JobPost = JobPost;
-    }
+    List<Skill> skills = new ArrayList<>();
+
+    @Enumerated(value = EnumType.STRING)
+    @Column(name = "status")
+    private Status status;
 }

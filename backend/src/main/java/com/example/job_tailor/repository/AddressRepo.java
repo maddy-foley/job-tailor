@@ -1,6 +1,6 @@
 package com.example.job_tailor.repository;
 
-import com.example.job_tailor.api.entity.Address;
+import com.example.job_tailor.model.Address;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.web.bind.annotation.CrossOrigin;
 
