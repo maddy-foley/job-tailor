@@ -1,19 +1,20 @@
-package com.example.job_tailor.entities;
+package com.example.job_tailor.model;
 import jakarta.persistence.*;
 import lombok.Getter;
+import lombok.NonNull;
 import lombok.Setter;
-
-import java.math.BigInteger;
-import java.util.Date;
 
 @Getter
 @Setter
 @Entity
-@PersistenceContext
-@Table(name = "Urls")
-public class UrlEntity {
+@Table(name = "urls")
+public class Url {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "url_id")
     private Long UrlID;
+
+    @NonNull
+    @Column(name = "url")
     private String Url;
 }

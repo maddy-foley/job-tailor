@@ -1,22 +1,23 @@
-package com.example.job_tailor.entities;
+package com.example.job_tailor.model;
 
 import jakarta.persistence.*;
 import lombok.Getter;
+import lombok.NonNull;
 import lombok.Setter;
-
-import java.util.Date;
 
 
 @Getter
 @Setter
 @Entity
-@PersistenceContext
-@Table(name = "Categories")
-public class CategoryEntity {
+@Table(name = "categories")
+public class Category {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "category_id")
     private Long CategoryID;
+
+    @NonNull
+    @Column(name = "name")
     private String Name;
 
-    //skill (many to many) connection
 }
