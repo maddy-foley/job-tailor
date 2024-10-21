@@ -15,7 +15,7 @@ import java.util.List;
 public class Address {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "address_id", columnDefinition = "serial")
+    @Column(name = "address_id")
     private Long AddressID;
 
     @NonNull
@@ -49,7 +49,6 @@ public class Address {
     @JoinColumn(name = "candidate_id",nullable = false)
     private Candidate candidate;
 
-    //might need to change
     @OneToMany(fetch = FetchType.EAGER)
     @JoinColumn(name = "url_id")
     private List<Url> urls = new ArrayList<>();

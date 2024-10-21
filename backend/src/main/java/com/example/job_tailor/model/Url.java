@@ -11,7 +11,7 @@ import lombok.Setter;
 public class Url {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "url_id", columnDefinition = "serial")
+    @Column(name = "url_id")
     private Long UrlID;
 
     @NonNull

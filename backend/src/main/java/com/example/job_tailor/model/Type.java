@@ -11,7 +11,7 @@ import lombok.Setter;
 public class Type {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "type_id", columnDefinition = "serial")
+    @Column(name = "type_id")
     private Long TypeID;
 
     @NonNull

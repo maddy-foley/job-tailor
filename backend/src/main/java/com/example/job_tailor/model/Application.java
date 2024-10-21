@@ -7,9 +7,9 @@ import lombok.Setter;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
-import java.util.ArrayList;
 import java.util.Date;
-import java.util.List;
+import java.util.HashSet;
+import java.util.Set;
 
 @Getter
 @Setter
@@ -18,7 +18,7 @@ import java.util.List;
 public class Application {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "application_id", columnDefinition = "serial")
+    @Column(name = "application_id")
     private Long ApplicationID;
 
     @NonNull
@@ -42,7 +42,7 @@ public class Application {
 
     @ManyToOne
     @JoinColumn(name = "candidate_id", nullable = false)
-    Candidate candidate;
+    Candidate Candidate;
 
     @ManyToMany
     @JoinTable(
@@ -50,9 +50,13 @@ public class Application {
         joinColumns = @JoinColumn(name = "application_id"),
         inverseJoinColumns = @JoinColumn(name = "skill_id")
     )
-    List<Skill> skills = new ArrayList<>();
+    Set<Skill> Skills = new HashSet<>();
 
     @Enumerated(value = EnumType.STRING)
     @Column(name = "status")
-    private Status status;
+    private EnumStatus Status;
+
+    public Application(){
+    }
+
 }

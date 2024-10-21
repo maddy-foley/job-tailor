@@ -6,19 +6,20 @@ import lombok.NonNull;
 import lombok.Setter;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
+import org.springframework.stereotype.Component;
 
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
+import java.util.*;
 
 @Getter
 @Setter
 @Entity
+@Component
 @Table(name = "candidates")
 public class Candidate {
+
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "candidate_id", columnDefinition = "serial")
+    @Column(name = "candidate_id")
     private Long CandidateID;
 
     @NonNull
@@ -47,5 +48,5 @@ public class Candidate {
         joinColumns = @JoinColumn(name = "candidate_id"),
         inverseJoinColumns = @JoinColumn(name = "skill_id")
     )
-    List<Skill> skills = new ArrayList<>();;
+    Set<Skill> skills = new HashSet<>();
 }

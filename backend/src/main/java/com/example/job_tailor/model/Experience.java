@@ -16,7 +16,7 @@ import java.util.List;
 public class Experience {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "experience_id", columnDefinition = "serial")
+    @Column(name = "experience_id")
     private Long ExperienceID;
 
     @NonNull
@@ -41,16 +41,12 @@ public class Experience {
     @JoinColumn(name="type_id", nullable = false)
     Type type;
 
-    @OneToMany(fetch = FetchType.EAGER)
-    @JoinColumn(name="accomplishment_id", nullable = false)
-    List<Accomplishment> accomplishments;
-
     @ManyToOne
     @JoinColumn(name = "candidate_id", nullable = false)
     Candidate candidate;
 
-    @OneToMany(fetch = FetchType.EAGER)
-    @JoinColumn(name="url_id", nullable = false)
-    List<Url> urls;
+    @OneToOne
+    @JoinColumn(name = "url_id", nullable = false)
+    private Url url;
 
 }

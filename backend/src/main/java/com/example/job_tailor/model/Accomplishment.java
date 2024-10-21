@@ -12,10 +12,14 @@ import lombok.Setter;
 public class Accomplishment {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "accomplishment_id", columnDefinition = "serial")
+    @Column(name = "accomplishment_id")
     private Long AccomplishmentID;
 
     @NonNull
     @Column(name = "description")
     private String Description;
+
+    @ManyToOne
+    @JoinColumn(name = "experience_id", nullable = false)
+    Experience experience;
 }
