@@ -22,4 +22,5 @@ public class Accomplishment {
     @ManyToOne
     @JoinColumn(name = "experience_id", nullable = false)
     Experience experience;
+    public Accomplishment(){};
 }

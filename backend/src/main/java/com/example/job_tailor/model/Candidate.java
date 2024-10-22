@@ -26,19 +26,19 @@ public class Candidate {
     @Column(name = "first_name")
     private String FirstName;
 
-    @Column(name = "middle_name")
-    private String MiddleName;
+//    @Column(name = "middle_name")
+//    private String MiddleName;
 
     @NonNull
     @Column(name = "last_name")
     private String LastName;
 
-    @NonNull
-    @CreationTimestamp
+//    @NonNull
+//    @CreationTimestamp
     @Column(name = "date_created")
     private Date DateCreated;
 
-    @UpdateTimestamp
+//    @UpdateTimestamp
     @Column(name = "date_updated")
     private Date DateUpdated;
 
@@ -49,4 +49,8 @@ public class Candidate {
         inverseJoinColumns = @JoinColumn(name = "skill_id")
     )
     Set<Skill> skills = new HashSet<>();
+
+    public Candidate(){
+
+    }
 }

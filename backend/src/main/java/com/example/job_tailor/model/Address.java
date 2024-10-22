@@ -6,7 +6,9 @@ import lombok.NonNull;
 import lombok.Setter;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 @Getter
 @Setter
@@ -51,5 +53,6 @@ public class Address {
 
     @OneToMany(fetch = FetchType.EAGER)
     @JoinColumn(name = "url_id")
-    private List<Url> urls = new ArrayList<>();
+    private Set<Url> urls = new HashSet<>();
+    public Address(){}
 }

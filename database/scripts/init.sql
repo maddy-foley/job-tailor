@@ -1,5 +1,6 @@
 -- DROP TABLE IF EXISTS candidates;
 
+
 CREATE TABLE candidates (
     candidate_id SERIAL PRIMARY KEY,
     first_name VARCHAR(15),

@@ -49,4 +49,5 @@ public class Experience {
     @JoinColumn(name = "url_id", nullable = false)
     private Url url;
 
+    public Experience(){}
 }

@@ -17,4 +17,6 @@ public class Url {
     @NonNull
     @Column(name = "url")
     private String Url;
+
+    public Url(){}
 }

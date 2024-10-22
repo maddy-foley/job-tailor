@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 
 import java.util.List;
 
-//@CrossOrigin("http://localhost:8080")
+@CrossOrigin("http://localhost:8080")
 //@RepositoryRestResource(collectionResourceRel = "candidate", path = "candidate")
-public interface CandidateRepo extends JpaRepository<Candidate, Long> {
+public interface CandidateRepo extends CrudRepository<Candidate, Long> {
 }

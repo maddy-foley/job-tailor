@@ -17,4 +17,6 @@ public class Type {
     @NonNull
     @Column(name = "name")
     private String Name;
+
+    public Type(){}
 }

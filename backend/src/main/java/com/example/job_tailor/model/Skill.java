@@ -36,5 +36,7 @@ public class Skill {
         joinColumns = @JoinColumn(name = "skill_id"),
         inverseJoinColumns = @JoinColumn(name = "category_id")
     )
-    Set<Category> categories = new HashSet<>();;
+    Set<Category> categories = new HashSet<>();
+
+    public Skill(){}
 }
