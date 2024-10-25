@@ -16,8 +16,8 @@ import java.util.Set;
 @Table(name = "skills")
 public class Skill {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "skill_id")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "skill_id", unique = true)
     private Long SkillID;
 
     @NonNull

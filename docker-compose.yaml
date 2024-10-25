@@ -2,23 +2,30 @@ services:
   server:
     build: ./backend
     image: app
+    container_name: spring-app
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:postgresql://db:5432/mydb
     ports:
       - "8080:8080"
     depends_on:
       - db
   client:
+    image: angular
+    container_name: angular-client
     build: ./frontend
     ports:
       - "4200:80"
   db:
+    image: postgres
+    container_name: db
     build: ./database
 #    restart: 'always'
     ports:
       - '5432:5432'
     env_file:
       - .env
-#    volumes:
-#      - 'data:/var/lib/postgresql/data'
+    volumes:
+      - 'data:/var/lib/postgresql/data'
 #  rabbitmq:
 #    image: 'rabbitmq:latest'
 #    environment:
@@ -26,5 +33,5 @@ services:
 #      - 'RABBITMQ_DEFAULT_USER=myuser'
 #    ports:
 #      - '5672'
-#volumes:
-#  data:
+volumes:
+  data:

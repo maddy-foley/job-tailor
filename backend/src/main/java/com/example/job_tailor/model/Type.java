@@ -10,8 +10,8 @@ import lombok.Setter;
 @Table(name = "types")
 public class Type {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "type_id")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "type_id", unique = true)
     private Long TypeID;
 
     @NonNull

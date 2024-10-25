@@ -15,8 +15,8 @@ import java.util.List;
 @Table(name = "experiences")
 public class Experience {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "experience_id")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "experience_id", unique = true)
     private Long ExperienceID;
 
     @NonNull

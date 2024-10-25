@@ -22,9 +22,9 @@ public class CandidateServiceImpl implements CandidateService {
     @Override
     public Candidate createCandidate(Candidate candidate){
         Candidate candidate1 = new Candidate();
-        candidate1.setFirstName("maddy");
+        candidate1.setFirstName(candidate.getFirstName());
 //        candidate1.setMiddleName("jane");
-        candidate1.setLastName("foley");
+        candidate1.setLastName(candidate.getLastName());
         candidateRepo.save(candidate1);
         return candidate1;
     }

@@ -6,6 +6,7 @@ import lombok.NonNull;
 import lombok.Setter;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
+import org.springframework.boot.context.properties.bind.DefaultValue;
 import org.springframework.stereotype.Component;
 
 import java.util.*;
@@ -18,8 +19,8 @@ import java.util.*;
 public class Candidate {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "candidate_id")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "candidate_id", unique = true)
     private Long CandidateID;
 
     @NonNull
@@ -33,12 +34,12 @@ public class Candidate {
     @Column(name = "last_name")
     private String LastName;
 
-//    @NonNull
-//    @CreationTimestamp
+    @NonNull
+    @CreationTimestamp
     @Column(name = "date_created")
     private Date DateCreated;
 
-//    @UpdateTimestamp
+    @UpdateTimestamp
     @Column(name = "date_updated")
     private Date DateUpdated;
 

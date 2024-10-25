@@ -16,8 +16,8 @@ import java.util.Set;
 @Table(name = "addresses")
 public class Address {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "address_id")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "address_id", unique = true)
     private Long AddressID;
 
     @NonNull

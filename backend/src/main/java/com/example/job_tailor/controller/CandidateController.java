@@ -4,6 +4,7 @@ package com.example.job_tailor.controller;
 import com.example.job_tailor.model.Candidate;
 import com.example.job_tailor.service.CandidateService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
@@ -14,7 +15,7 @@ import java.util.List;
 //
 //@CrossOrigin("http://localhost:8080")
 @RestController
-@RequestMapping("/api")
+@RequestMapping(value = "/api",produces = MediaType.APPLICATION_JSON_VALUE)
 public class CandidateController {
 
     @Autowired
@@ -37,6 +38,7 @@ public class CandidateController {
             if (createdCandidate == null) {
                 return ResponseEntity.notFound().build();
             } else {
+                System.out.println(candidate);
                 URI uri = ServletUriComponentsBuilder.fromCurrentRequest()
                         .path("/{id}")
                         .buildAndExpand(candidate.getCandidateID())

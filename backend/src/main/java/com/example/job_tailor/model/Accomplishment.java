@@ -11,8 +11,8 @@ import lombok.Setter;
 @Table(name = "accomplishments")
 public class Accomplishment {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "accomplishment_id")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "accomplishment_id", unique = true)
     private Long AccomplishmentID;
 
     @NonNull
