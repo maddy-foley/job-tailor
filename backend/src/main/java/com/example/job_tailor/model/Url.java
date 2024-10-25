@@ -10,11 +10,13 @@ import lombok.Setter;
 @Table(name = "urls")
 public class Url {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "url_id")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "url_id", unique = true)
     private Long UrlID;
 
     @NonNull
     @Column(name = "url")
     private String Url;
+
+    public Url(){}
 }

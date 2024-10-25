@@ -6,7 +6,9 @@ import lombok.NonNull;
 import lombok.Setter;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 @Getter
 @Setter
@@ -14,8 +16,8 @@ import java.util.List;
 @Table(name = "addresses")
 public class Address {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "address_id")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "address_id", unique = true)
     private Long AddressID;
 
     @NonNull
@@ -51,5 +53,6 @@ public class Address {
 
     @OneToMany(fetch = FetchType.EAGER)
     @JoinColumn(name = "url_id")
-    private List<Url> urls = new ArrayList<>();
+    private Set<Url> urls = new HashSet<>();
+    public Address(){}
 }

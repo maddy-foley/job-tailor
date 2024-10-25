@@ -1,7 +1,7 @@
 -- DROP TABLE IF EXISTS candidates;
 
 CREATE TABLE candidates (
-    candidate_id SERIAL PRIMARY KEY,
+    candidate_id SERIAL UNIQUE NOT NULL,
     first_name VARCHAR(15),
     last_name VARCHAR(15),
     date_created DATE,
@@ -11,14 +11,14 @@ CREATE TABLE candidates (
 -- DROP TABLE IF EXISTS urls;
 
 CREATE TABLE urls(
-    url_id SERIAL PRIMARY KEY,
+    url_id BIGINT PRIMARY KEY,
     url VARCHAR(150)
 );
 
 -- DROP TABLE IF EXISTS addresses;
 
 CREATE TABLE addresses (
-    address_id SERIAL PRIMARY KEY,
+    address_id BIGINT PRIMARY KEY,
     email VARCHAR(30),
     phone VARCHAR(15),
     street_address DATE,
@@ -33,17 +33,17 @@ CREATE TABLE addresses (
 -- DROP TABLE IF EXISTS types;
 
 CREATE TABLE IF NOT EXISTS types (
-    type_id SERIAL PRIMARY KEY,
+    type_id BIGINT PRIMARY KEY,
     name VARCHAR(20)
 );
 
 -- DROP TABLE IF EXISTS experiences;
 
 CREATE TABLE IF NOT EXISTS experiences (
-    experience_id SERIAL PRIMARY KEY,
+    experience_id BIGINT PRIMARY KEY,
     name VARCHAR(30),
     establishment VARCHAR(30),
-    description VARCHAR(50),
+    description TEXT,
     start_date DATE,
     end_date DATE,
     type_id INTEGER REFERENCES types(type_id),
@@ -54,15 +54,15 @@ CREATE TABLE IF NOT EXISTS experiences (
 -- DROP TABLE IF EXISTS accomplishments;
 
 CREATE TABLE IF NOT EXISTS accomplishments(
-    accomplishment_id SERIAL PRIMARY KEY,
-    description VARCHAR(50),
+    accomplishment_id BIGINT PRIMARY KEY,
+    description TEXT,
     experience_id INTEGER NOT NULL REFERENCES experiences(experience_id)
 );
 
 -- DROP TABLE IF EXISTS applications;
 
 CREATE TABLE IF NOT EXISTS applications(
-    application_id SERIAL PRIMARY KEY,
+    application_id BIGINT PRIMARY KEY,
     company VARCHAR(30),
     name VARCHAR(20),
     date_created DATE,
@@ -76,7 +76,7 @@ CREATE TABLE IF NOT EXISTS applications(
 -- DROP TABLE IF EXISTS skills;
 
 CREATE TABLE IF NOT EXISTS skills(
-    skill_id SERIAL PRIMARY KEY,
+    skill_id BIGINT PRIMARY KEY,
     name VARCHAR(20),
     ability INTEGER,
     years_of_experience INTEGER

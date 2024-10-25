@@ -17,8 +17,8 @@ import java.util.Set;
 @Table(name = "applications")
 public class Application {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "application_id")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "application_id",unique = true)
     private Long ApplicationID;
 
     @NonNull

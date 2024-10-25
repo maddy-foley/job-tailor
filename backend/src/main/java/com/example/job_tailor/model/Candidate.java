@@ -6,6 +6,7 @@ import lombok.NonNull;
 import lombok.Setter;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
+import org.springframework.boot.context.properties.bind.DefaultValue;
 import org.springframework.stereotype.Component;
 
 import java.util.*;
@@ -18,16 +19,16 @@ import java.util.*;
 public class Candidate {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "candidate_id")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "candidate_id", unique = true)
     private Long CandidateID;
 
     @NonNull
     @Column(name = "first_name")
     private String FirstName;
 
-    @Column(name = "middle_name")
-    private String MiddleName;
+//    @Column(name = "middle_name")
+//    private String MiddleName;
 
     @NonNull
     @Column(name = "last_name")
@@ -49,4 +50,8 @@ public class Candidate {
         inverseJoinColumns = @JoinColumn(name = "skill_id")
     )
     Set<Skill> skills = new HashSet<>();
+
+    public Candidate(){
+
+    }
 }
