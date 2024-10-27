@@ -1,14 +1,14 @@
 package com.example.job_tailor.service;
 
+
 import com.example.job_tailor.model.Candidate;
 import com.example.job_tailor.repository.CandidateRepo;
-import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.ErrorResponse;
+import org.springframework.web.bind.annotation.ResponseStatus;
 
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.Optional;
 
 @Service
 public class CandidateServiceImpl implements CandidateService {
@@ -29,9 +29,9 @@ public class CandidateServiceImpl implements CandidateService {
         return candidate1;
     }
 
-//    @Override
-//    public List<Candidate> getAllCandidates(){
-//        List<Candidate> c = candidateRepo.findAll();
-//        return c;
-//    }
+
+    @Override
+    public Candidate getCandidate(Long id) {
+       return candidateRepo.findById(id).orElse(null);
+    }
 }
