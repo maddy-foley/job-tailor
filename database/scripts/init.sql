@@ -11,14 +11,14 @@ CREATE TABLE candidates (
 -- DROP TABLE IF EXISTS urls;
 
 CREATE TABLE urls(
-    url_id BIGINT PRIMARY KEY,
+    url_id SERIAL UNIQUE NOT NULL,
     url VARCHAR(150)
 );
 
 -- DROP TABLE IF EXISTS addresses;
 
 CREATE TABLE addresses (
-    address_id BIGINT PRIMARY KEY,
+    address_id SERIAL UNIQUE NOT NULL,
     email VARCHAR(30),
     phone VARCHAR(15),
     street_address DATE,
@@ -33,14 +33,14 @@ CREATE TABLE addresses (
 -- DROP TABLE IF EXISTS types;
 
 CREATE TABLE IF NOT EXISTS types (
-    type_id BIGINT PRIMARY KEY,
+    type_id SERIAL UNIQUE NOT NULL,
     name VARCHAR(20)
 );
 
 -- DROP TABLE IF EXISTS experiences;
 
 CREATE TABLE IF NOT EXISTS experiences (
-    experience_id BIGINT PRIMARY KEY,
+    experience_id SERIAL UNIQUE NOT NULL,
     name VARCHAR(30),
     establishment VARCHAR(30),
     description TEXT,
@@ -54,7 +54,7 @@ CREATE TABLE IF NOT EXISTS experiences (
 -- DROP TABLE IF EXISTS accomplishments;
 
 CREATE TABLE IF NOT EXISTS accomplishments(
-    accomplishment_id BIGINT PRIMARY KEY,
+    accomplishment_id SERIAL UNIQUE NOT NULL,
     description TEXT,
     experience_id INTEGER NOT NULL REFERENCES experiences(experience_id)
 );
@@ -62,7 +62,7 @@ CREATE TABLE IF NOT EXISTS accomplishments(
 -- DROP TABLE IF EXISTS applications;
 
 CREATE TABLE IF NOT EXISTS applications(
-    application_id BIGINT PRIMARY KEY,
+    application_id SERIAL UNIQUE NOT NULL,
     company VARCHAR(30),
     name VARCHAR(20),
     date_created DATE,
@@ -76,7 +76,7 @@ CREATE TABLE IF NOT EXISTS applications(
 -- DROP TABLE IF EXISTS skills;
 
 CREATE TABLE IF NOT EXISTS skills(
-    skill_id BIGINT PRIMARY KEY,
+    skill_id SERIAL UNIQUE NOT NULL,
     name VARCHAR(20),
     ability INTEGER,
     years_of_experience INTEGER
@@ -85,14 +85,14 @@ CREATE TABLE IF NOT EXISTS skills(
 -- DROP TABLE IF EXISTS categories;
 
 CREATE TABLE IF NOT EXISTS categories(
-     category_id SERIAL PRIMARY KEY,
+     category_id SERIAL UNIQUE NOT NULL,
      name VARCHAR(30)
 );
 
 -- DROP TABLE IF EXISTS skill_categories;
 
 CREATE TABLE IF NOT EXISTS skill_categories(
-    id SERIAL PRIMARY KEY,
+    id SERIAL UNIQUE NOT NULL,
     category_id INTEGER REFERENCES categories(category_id) ON DELETE CASCADE,
     skill_id INTEGER REFERENCES skills(skill_id) ON DELETE CASCADE
 );
@@ -100,7 +100,7 @@ CREATE TABLE IF NOT EXISTS skill_categories(
 -- DROP TABLE IF EXISTS application_skillss;
 
 CREATE TABLE IF NOT EXISTS application_skills(
-   id SERIAL PRIMARY KEY,
+   id SERIAL UNIQUE NOT NULL,
    application_id INTEGER REFERENCES applications(application_id) ON DELETE CASCADE,
    skill_id INTEGER REFERENCES skills(skill_id) ON DELETE CASCADE
 );
@@ -108,7 +108,7 @@ CREATE TABLE IF NOT EXISTS application_skills(
 -- DROP TABLE IF EXISTS candidate_skills;
 
 CREATE TABLE IF NOT EXISTS candidate_skills(
-     id SERIAL PRIMARY KEY,
+     id SERIAL UNIQUE NOT NULL,
      candidate_id INTEGER REFERENCES candidates(candidate_id) ON DELETE CASCADE,
      skill_id INTEGER REFERENCES skills(skill_id) ON DELETE CASCADE
 );

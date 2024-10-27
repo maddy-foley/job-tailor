@@ -5,10 +5,7 @@ import com.example.job_tailor.model.Candidate;
 import com.example.job_tailor.repository.CandidateRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.web.ErrorResponse;
-import org.springframework.web.bind.annotation.ResponseStatus;
 
-import java.util.Optional;
 
 @Service
 public class CandidateServiceImpl implements CandidateService {
@@ -21,12 +18,12 @@ public class CandidateServiceImpl implements CandidateService {
     }
     @Override
     public Candidate createCandidate(Candidate candidate){
-        Candidate candidate1 = new Candidate();
-        candidate1.setFirstName(candidate.getFirstName());
+        Candidate c = new Candidate();
+        c.setFirstName(candidate.getFirstName());
 //        candidate1.setMiddleName("jane");
-        candidate1.setLastName(candidate.getLastName());
-        candidateRepo.save(candidate1);
-        return candidate1;
+        c.setLastName(candidate.getLastName());
+        candidateRepo.save(c);
+        return c;
     }
 
 
