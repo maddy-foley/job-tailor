@@ -45,6 +45,4 @@ public class CandidateController {
                         .body(createdCandidate);
             }
     }
-
-
 }
