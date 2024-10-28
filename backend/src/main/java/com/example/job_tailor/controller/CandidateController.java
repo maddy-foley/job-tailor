@@ -1,6 +1,7 @@
 package com.example.job_tailor.controller;
 
 
+import com.example.job_tailor.dto.CreateCandidateDto;
 import com.example.job_tailor.model.Candidate;
 import com.example.job_tailor.service.CandidateService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,9 +9,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
-import java.net.URI;
 
 @RestController
 @RequestMapping(value = "/api/candidate",produces = MediaType.APPLICATION_JSON_VALUE)
@@ -30,19 +29,29 @@ public class CandidateController {
     }
 
     @PostMapping("/new")
-    public ResponseEntity<Candidate> createCandidate(@RequestBody Candidate candidate){
-            Candidate createdCandidate = candidateService.createCandidate(candidate);
+    public ResponseEntity<Candidate> createCandidate(@RequestBody CreateCandidateDto userInfo){
+            Candidate createdCandidate = candidateService.createCandidate(userInfo);
             if (createdCandidate == null) {
                 return ResponseEntity.notFound().build();
             } else {
-                System.out.println(candidate);
-                URI uri = ServletUriComponentsBuilder.fromCurrentRequest()
-                        .path("/{id}")
-                        .buildAndExpand(candidate.getCandidateID())
-                        .toUri();
-
-                return ResponseEntity.created(uri)
-                        .body(createdCandidate);
+                return new ResponseEntity<>(createdCandidate, HttpStatus.OK);
             }
     }
+
+//    @PostMapping("/{id}/address")
+//    public ResponseEntity<Candidate> createCandidate(@PathVariable("id") Long id){
+//        if (createdCandidate == null) {
+//            return ResponseEntity.notFound().build();
+//        } else {
+//            System.out.println(candidate);
+//            URI uri = ServletUriComponentsBuilder.fromCurrentRequest()
+//                    .path("/{id}")
+//                    .buildAndExpand(candidate.getCandidateID())
+//                    .toUri();
+//
+//            return ResponseEntity.created(uri)
+//                    .body(createdCandidate);
+//        }
+//    }
+
 }
