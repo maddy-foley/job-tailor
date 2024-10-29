@@ -19,30 +19,30 @@ public class Application {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "application_id",unique = true)
-    private Long ApplicationID;
+    private Long applicationID;
 
     @NonNull
     @Column(name = "company")
-    private String Company; // maybe turn to FK
+    private String company; // maybe turn to FK
 
     @NonNull
     @Column(name = "name")
-    private String Name;
+    private String name;
 
     @CreationTimestamp
     @Column(name = "date_created")
-    private Date DateCreated;
+    private Date dateCreated;
 
     @UpdateTimestamp
     @Column(name = "date_updated")
-    private Date DateUpdated;
+    private Date dateUpdated;
 
     @Column(name = "job_post")
-    private String JobPost;
+    private String jobPost;
 
     @ManyToOne
     @JoinColumn(name = "candidate_id", nullable = false)
-    Candidate Candidate;
+    Candidate candidate;
 
     @ManyToMany
     @JoinTable(
@@ -50,11 +50,11 @@ public class Application {
         joinColumns = @JoinColumn(name = "application_id"),
         inverseJoinColumns = @JoinColumn(name = "skill_id")
     )
-    Set<Skill> Skills = new HashSet<>();
+    Set<Skill> skills = new HashSet<>();
 
     @Enumerated(value = EnumType.STRING)
     @Column(name = "status")
-    private EnumStatus Status;
+    private EnumStatus status;
 
     public Application(){
     }

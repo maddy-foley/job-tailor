@@ -2,11 +2,16 @@ package com.example.job_tailor.service;
 
 
 import com.example.job_tailor.dto.CreateCandidateDto;
+import com.example.job_tailor.dto.CreateCandidateResponse;
 import com.example.job_tailor.model.Address;
+import com.example.job_tailor.model.Application;
 import com.example.job_tailor.model.Candidate;
 import com.example.job_tailor.repository.AddressRepo;
 import com.example.job_tailor.repository.CandidateRepo;
+import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.ApplicationContext;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
@@ -27,28 +32,29 @@ public class CandidateServiceImpl implements CandidateService {
         this.candidateRepo = candidateRepo;
     }
     @Override
-    public Candidate createCandidate(CreateCandidateDto userInfo){
-        Candidate c = new Candidate();
-        Address a = new Address();
-        System.out.println(userInfo);
+    @Transactional
+    public CreateCandidateResponse createCandidate(CreateCandidateDto candidateInfo){
 
-        c.setFirstName(userInfo.getCandidate().getFirstName());
-        c.setLastName(userInfo.getCandidate().getLastName());
+        Candidate c = new Candidate(candidateInfo.getFirstName(), candidateInfo.getLastName());
         candidateRepo.save(c);
 
-        a.setCandidate(c);
-        a.setPhone(userInfo.getAddress().getPhone());
-        a.setEmail(userInfo.getAddress().getEmail());
-        a.setStreetAddress(userInfo.getAddress().getStreetAddress());
-        a.setCity(userInfo.getAddress().getCity());
-        a.setState(userInfo.getAddress().getState());
-        a.setZipCode(userInfo.getAddress().getZipCode());
-        a.setCountry(userInfo.getAddress().getCountry());
-        a.setUrls(userInfo.getAddress().getUrls());
+        Address a = new Address(
+                candidateInfo.getEmail(),
+                candidateInfo.getPhone(),
+                candidateInfo.getCity(),
+                candidateInfo.getZipCode(),
+                candidateInfo.getCountry(),
+                candidateInfo.getState(),
+                c,
+                candidateInfo.getStreetAddress()
+                );
         addressRepo.save(a);
 
+        //ensure both have been saved
+        CreateCandidateResponse res = new CreateCandidateResponse();
+        res.setFirstName(c.getFirstName());
 
-        return c;
+        return res;
     }
 
     @Override

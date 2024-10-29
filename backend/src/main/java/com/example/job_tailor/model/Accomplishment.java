@@ -13,11 +13,11 @@ public class Accomplishment {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "accomplishment_id", unique = true)
-    private Long AccomplishmentID;
+    private Long accomplishmentID;
 
     @NonNull
     @Column(name = "description")
-    private String Description;
+    private String description;
 
     @ManyToOne
     @JoinColumn(name = "experience_id", nullable = false)

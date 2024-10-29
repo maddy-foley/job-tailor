@@ -12,11 +12,11 @@ public class Url {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "url_id", unique = true)
-    private Long UrlID;
+    private Long urlID;
 
     @NonNull
     @Column(name = "url")
-    private String Url;
+    private String url;
 
     public Url(){}
 }

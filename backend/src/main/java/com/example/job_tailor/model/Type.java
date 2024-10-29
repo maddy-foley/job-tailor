@@ -12,11 +12,11 @@ public class Type {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "type_id", unique = true)
-    private Long TypeID;
+    private Long typeID;
 
     @NonNull
     @Column(name = "name")
-    private String Name;
+    private String name;
 
     public Type(){}
 }

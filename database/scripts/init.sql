@@ -21,7 +21,7 @@ CREATE TABLE addresses (
     address_id SERIAL UNIQUE NOT NULL,
     email VARCHAR(30),
     phone VARCHAR(15),
-    street_address DATE,
+    street_address VARCHAR(35),
     city VARCHAR(15),
     zip_code INTEGER,
     state VARCHAR(20),

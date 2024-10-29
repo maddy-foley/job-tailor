@@ -21,27 +21,27 @@ public class Candidate {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "candidate_id", unique = true)
-    private Long CandidateID;
+    private Long candidateID;
 
     @NonNull
     @Column(name = "first_name")
-    private String FirstName;
+    private String firstName;
 
 //    @Column(name = "middle_name")
-//    private String MiddleName;
+//    private String middleName;
 
     @NonNull
     @Column(name = "last_name")
-    private String LastName;
+    private String lastName;
 
     @NonNull
     @CreationTimestamp
     @Column(name = "date_created")
-    private Date DateCreated;
+    private Date dateCreated;
 
     @UpdateTimestamp
     @Column(name = "date_updated")
-    private Date DateUpdated;
+    private Date dateUpdated;
 
     @ManyToMany
     @JoinTable(
@@ -49,9 +49,13 @@ public class Candidate {
         joinColumns = @JoinColumn(name = "candidate_id"),
         inverseJoinColumns = @JoinColumn(name = "skill_id")
     )
-    Set<Skill> skills = new HashSet<>();
+    Set<Skill> skills;
 
     public Candidate(){
-
+    }
+    public Candidate(@NonNull String firstName, @NonNull String lastName){
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.skills = new HashSet<>();
     }
 }
