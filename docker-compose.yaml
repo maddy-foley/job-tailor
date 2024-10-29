@@ -9,6 +9,8 @@ services:
       - "8080:8080"
     depends_on:
       - db
+    volumes:
+      - ./src:/app/src
   client:
     image: angular
     container_name: angular-client

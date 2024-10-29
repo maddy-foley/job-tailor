@@ -21,20 +21,20 @@ public class Experience {
 
     @NonNull
     @Column(name = "name")
-    private String Name;
+    private String name;
     //nullable
     @Column(name = "establishment")
-    private String Establishment;
+    private String establishment;
 
     @NonNull
     @Column(name = "description")
-    private String Description;
+    private String description;
 
     @Column(name = "start_date")
-    private LocalDate StartDate;
+    private LocalDate startDate;
 
     @Column(name = "end_date")
-    private LocalDate EndDate;
+    private LocalDate endDate;
 
     // don't cascade delete type
     @ManyToOne

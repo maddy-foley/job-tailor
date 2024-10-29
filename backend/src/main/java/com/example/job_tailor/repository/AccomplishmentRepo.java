@@ -8,7 +8,7 @@ import org.springframework.stereotype.Repository;
 import org.springframework.web.bind.annotation.CrossOrigin;
 
 //needs change - do we even need an api for this?
-//@CrossOrigin("http://localhost:8080")
+@CrossOrigin("http://localhost:8080")
 //@RepositoryRestResource(collectionResourceRel = "accomplishment", path = "accomplishment")
 //@Repository
 public interface AccomplishmentRepo extends JpaRepository<Accomplishment, Long> {

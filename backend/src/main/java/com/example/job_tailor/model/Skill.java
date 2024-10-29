@@ -18,17 +18,17 @@ public class Skill {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "skill_id", unique = true)
-    private Long SkillID;
+    private Long skillID;
 
     @NonNull
     @Column(name = "name")
-    private String Name;
+    private String name;
 
     @Column(name = "years_of_experience")
-    private Integer YOE;
+    private Integer yearsOfExperience;
 
     @Column(name = "ability")
-    private Integer Ability; // self-rating out of 5
+    private Integer ability; // self-rating out of 5
 
     @ManyToMany
     @JoinTable(
