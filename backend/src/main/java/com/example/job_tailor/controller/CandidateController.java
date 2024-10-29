@@ -38,12 +38,6 @@ public class CandidateController {
 
     @PostMapping("/new")
     public ResponseEntity<CreateCandidateResponse> createCandidate(@RequestBody CreateCandidateDto candidateInfo){
-        System.out.println("****************** WORKING *****************");
-        System.out.println();
-        System.out.println();
-        System.out.println();
-        System.out.println();
-        System.out.println(candidateInfo);
         CreateCandidateResponse res = candidateService.createCandidate(candidateInfo);
 
         if(res == null){
