@@ -5,11 +5,13 @@ import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.util.Set;
+
 @Getter
 @Setter
 @Entity
 @Table(name = "candidate_skills")
-public class CandidateSkill extends Skill {
+public class CandidateSkill {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -21,4 +23,12 @@ public class CandidateSkill extends Skill {
 
     @Column(name = "ability")
     private Integer ability; // self-rating out of 5
+
+    @ManyToMany
+    @JoinTable(
+            name = "skills",
+            joinColumns = @JoinColumn(name = "candidate_id"),
+            inverseJoinColumns = @JoinColumn(name = "skill_id")
+    )
+    private Set<Skill> skills;
 }
