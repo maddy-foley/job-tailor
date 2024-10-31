@@ -22,26 +22,22 @@ public class SkillController {
 
     // FUTURE EDITS NEEDED
     @PostMapping("public/skill/new")
-    public ResponseEntity<Skill> createSkill(@RequestBody Skill skill){
-        Skill createdSkill = skillService.createSkill(skill);
+    public ResponseEntity<List<Skill>> createSkill(@RequestBody List<Skill> skills){
+        List<Skill> createdSkill = skillService.createSkills(skills);
 
         if(createdSkill == null ){
             return ResponseEntity.notFound().build();
         } else {
-            System.out.println(skill);
-            URI uri = ServletUriComponentsBuilder.fromCurrentRequest()
-                    .path("/{id}")
-                    .buildAndExpand(skill.getSkillID())
-                    .toUri();
-
-            return ResponseEntity.created(uri)
-                    .body(createdSkill);
+            return new ResponseEntity<>(skills, HttpStatus.OK);
         }
     }
 
     @GetMapping("public/skill/all")
     public ResponseEntity<List<Skill>> getSkills(){
         List<Skill> skills = skillService.getSkills();
+        if(skills == null){
+            return ResponseEntity.notFound().build();
+        }
         return new ResponseEntity<>(skills, HttpStatus.OK);
     }
 
