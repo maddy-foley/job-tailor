@@ -1,4 +1,4 @@
-package com.example.job_tailor.user.service;
+package com.example.job_tailor.common.service;
 
 import com.example.job_tailor.common.model.Skill;
 

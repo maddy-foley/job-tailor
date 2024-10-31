@@ -1,7 +1,7 @@
 package com.example.job_tailor.common.controller;
 
 import com.example.job_tailor.common.model.Skill;
-import com.example.job_tailor.user.service.SkillService;
+import com.example.job_tailor.common.service.SkillService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
