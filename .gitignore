@@ -12,4 +12,5 @@
 # Hidden files
 .DS_Store
 
-*/.env
+.env
+docker-compose.yaml
