@@ -14,3 +14,4 @@
 
 .env
 docker-compose.yaml
+./backend/src/resources/*

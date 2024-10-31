@@ -24,4 +24,3 @@ target/
 
 # OS-specific files
 .DS_Store
-./src/main/resources/*
