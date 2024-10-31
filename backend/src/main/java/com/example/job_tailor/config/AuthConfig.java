@@ -1,4 +1,4 @@
-package com.example.job_tailor.common.config;
+package com.example.job_tailor.config;
 
 
 import org.springframework.context.annotation.Bean;
@@ -20,8 +20,7 @@ public class AuthConfig {
         This is where we configure the security required for our endpoints and setup our app to serve as
         an OAuth2 Resource Server, using JWT validation.
         */
-        return http
-                .authorizeHttpRequests((authorize) -> authorize
+        return http.authorizeHttpRequests((authorize) -> authorize
                         .requestMatchers("/api/public").permitAll()
                         .requestMatchers("/api/private").authenticated()
                         .requestMatchers("/api/private-scoped").hasAuthority("SCOPE_read:messages")

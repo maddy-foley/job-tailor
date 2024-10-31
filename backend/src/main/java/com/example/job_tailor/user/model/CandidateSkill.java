@@ -24,11 +24,4 @@ public class CandidateSkill {
     @Column(name = "ability")
     private Integer ability; // self-rating out of 5
 
-    @ManyToMany
-    @JoinTable(
-            name = "skills",
-            joinColumns = @JoinColumn(name = "candidate_id"),
-            inverseJoinColumns = @JoinColumn(name = "skill_id")
-    )
-    private Set<Skill> skills;
 }
