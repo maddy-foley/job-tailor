@@ -19,7 +19,7 @@ import java.net.http.HttpResponse;
 
 
 @RestController
-@RequestMapping(value = "/api/candidate", produces = MediaType.APPLICATION_JSON_VALUE)
+@RequestMapping(value = "api", produces = MediaType.APPLICATION_JSON_VALUE)
 public class CandidateController {
 
     @Autowired
@@ -29,14 +29,14 @@ public class CandidateController {
     public CandidateController(CandidateService candidateService){
         this.candidateService = candidateService;
     }
-    @GetMapping("/{id}")
+    @GetMapping("public/candidate/{id}")
     public ResponseEntity<Candidate> getCandidate(@PathVariable("id") Long id) {
         Candidate c = candidateService.getCandidate(id);
 
         return new ResponseEntity<>(c, HttpStatus.OK);
     }
 
-    @PostMapping("/new")
+    @PostMapping("public/candidate/new")
     public ResponseEntity<CreateCandidateResponse> createCandidate(@RequestBody CreateCandidateDto candidateInfo){
         CreateCandidateResponse res = candidateService.createCandidate(candidateInfo);
 

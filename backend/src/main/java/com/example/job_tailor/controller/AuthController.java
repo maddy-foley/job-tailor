@@ -2,10 +2,7 @@ package com.example.job_tailor.controller;
 
 import com.example.job_tailor.model.Message;
 import org.springframework.http.MediaType;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping(path = "api", produces = MediaType.APPLICATION_JSON_VALUE)
@@ -27,4 +24,5 @@ public class AuthController {
     public Message privateScopedEndpoint() {
         return new Message("All good. You can see this because you are Authenticated with a Token granted the 'read:messages' scope");
     }
+
 }

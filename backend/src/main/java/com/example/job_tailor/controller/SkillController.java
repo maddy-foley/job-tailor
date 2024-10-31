@@ -13,7 +13,7 @@ import java.net.URI;
 import java.util.List;
 
 @RestController
-@RequestMapping(value = "/api/skill",produces = MediaType.APPLICATION_JSON_VALUE)
+@RequestMapping(value = "api",produces = MediaType.APPLICATION_JSON_VALUE)
 public class SkillController {
     @Autowired
     private SkillService skillService;
@@ -21,7 +21,7 @@ public class SkillController {
     public SkillController(SkillService skillService){ this.skillService = skillService; }
 
     // FUTURE EDITS NEEDED
-    @PostMapping("/new")
+    @PostMapping("public/skill/new")
     public ResponseEntity<Skill> createSkill(@RequestBody Skill skill){
         Skill createdSkill = skillService.createSkill(skill);
 
@@ -39,7 +39,7 @@ public class SkillController {
         }
     }
 
-    @GetMapping("/all")
+    @GetMapping("public/skill/all")
     public ResponseEntity<List<Skill>> getSkills(){
         List<Skill> skills = skillService.getSkills();
         return new ResponseEntity<>(skills, HttpStatus.OK);
