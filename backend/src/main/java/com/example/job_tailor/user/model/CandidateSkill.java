@@ -24,4 +24,9 @@ public class CandidateSkill {
     @Column(name = "ability")
     private Integer ability; // self-rating out of 5
 
+    @OneToOne
+    @JoinColumn(name = "skill_id",nullable = false)
+    private Skill skill;
+
+    //might need one-to-one for candidate_id
 }

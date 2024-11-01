@@ -1,18 +1,22 @@
 package com.example.job_tailor.user.service;
 
 
+import com.example.job_tailor.common.repo.SkillRepo;
 import com.example.job_tailor.user.dto.CreateCandidateDto;
 import com.example.job_tailor.user.dto.CreateCandidateResponse;
 import com.example.job_tailor.user.model.Address;
 import com.example.job_tailor.user.model.Candidate;
 import com.example.job_tailor.common.model.Skill;
+import com.example.job_tailor.user.model.CandidateSkill;
 import com.example.job_tailor.user.repo.AddressRepo;
 import com.example.job_tailor.user.repo.CandidateRepo;
+import com.example.job_tailor.user.repo.CandidateSkillRepo;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 
 @Service
@@ -24,9 +28,17 @@ public class CandidateServiceImpl implements CandidateService {
     @Autowired
     private AddressRepo addressRepo;
 
-    public CandidateServiceImpl(CandidateRepo candidateRepo, AddressRepo addressRepo){
+    @Autowired
+    CandidateSkillRepo candidateSkillRepo;
+
+    @Autowired
+    SkillRepo skillRepo;
+
+    public CandidateServiceImpl(CandidateRepo candidateRepo, AddressRepo addressRepo, CandidateSkillRepo candidateSkillRepo,SkillRepo skillRepo){
         this.addressRepo = addressRepo;
         this.candidateRepo = candidateRepo;
+        this.candidateSkillRepo = candidateSkillRepo;
+        this.skillRepo = skillRepo;
     }
     @Override
     @Transactional
@@ -61,8 +73,28 @@ public class CandidateServiceImpl implements CandidateService {
 
     @Override
     public String addCandidateSkills(Long candidateID,List<Skill> skills){
-//        Candidate c = candidateRepo.findById(candidateID);
-        return "";
+        Optional<Candidate> c = candidateRepo.findById(candidateID);
+        if(c.isPresent()){
+            for(Skill skill : skills){
+                Skill skill1 = findSkill(skill);
+                CandidateSkill cs = new CandidateSkill();
+                cs.setCandidateSkillID(candidateID);
+                cs.getCandidateSkillID(skill1.getSkillID());
+            }
+        } else {
+            return "Error";
+        }
     }
 
+    private Skill findSkill(Skill skill){
+        Skill s = skillRepo.findByName(skill.getName());
+        if (s == null){
+            Skill skill1 = new Skill();
+            skill1.setName(skill.getName());
+            skillRepo.save(skill1);
+            return skill1;
+        } else {
+            return s;
+        }
+    }
 }

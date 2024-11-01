@@ -77,7 +77,7 @@ CREATE TABLE IF NOT EXISTS applications(
 
 CREATE TABLE IF NOT EXISTS skills(
     skill_id SERIAL UNIQUE NOT NULL,
-    name VARCHAR(20)
+    name VARCHAR(20) UNIQUE
 );
 
 -- DROP TABLE IF EXISTS categories;

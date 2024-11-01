@@ -12,7 +12,7 @@ public class ApplicationSkill {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "application_skill_id", unique = true)
-    private Long appSkillID;
+    private Long applicationSkillID;
 
 
 }

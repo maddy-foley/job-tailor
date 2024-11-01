@@ -1,6 +1,7 @@
 package com.example.job_tailor.user.model;
 
 import com.example.job_tailor.common.model.Skill;
+import com.example.job_tailor.common.model.Url;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NonNull;
@@ -43,19 +44,23 @@ public class Candidate {
     @Column(name = "date_updated")
     private Date dateUpdated;
 
-    @ManyToMany
-    @JoinTable(
-        name = "candidate_skills",
-        joinColumns = @JoinColumn(name = "candidate_id"),
-        inverseJoinColumns = @JoinColumn(name = "skill_id")
-    )
-    Set<Skill> skills;
+    @OneToMany(fetch = FetchType.EAGER)
+    @JoinColumn(name = "candidate_skill_id")
+    Set<CandidateSkill> candidateSkills;
+
+//    @OneToMany
+//    @JoinTable(
+//        name = "candidate_skills",
+//        joinColumns = @JoinColumn(name = "candidate_id"),
+//        inverseJoinColumns = @JoinColumn(name = "skill_id")
+//    )
+//    Set<CandidateSkill> CandidateSkills;
 
     public Candidate(){
     }
     public Candidate(@NonNull String firstName, @NonNull String lastName){
         this.firstName = firstName;
         this.lastName = lastName;
-        this.skills = new HashSet<>();
+        this.candidateSkills = new HashSet<>();
     }
 }
