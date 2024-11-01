@@ -21,7 +21,7 @@ public class Skill {
     private Long skillID;
 
     @NonNull
-    @Column(name = "name")
+    @Column(name = "name", unique = true)
     private String name;
 
     @ManyToMany

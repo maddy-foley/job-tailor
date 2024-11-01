@@ -95,7 +95,7 @@ CREATE TABLE IF NOT EXISTS skill_categories(
     skill_id INTEGER REFERENCES skills(skill_id) ON DELETE CASCADE
 );
 
--- DROP TABLE IF EXISTS application_skillss;
+-- DROP TABLE IF EXISTS application_skills;
 
 CREATE TABLE IF NOT EXISTS application_skills(
    application_skill_id SERIAL UNIQUE NOT NULL,
