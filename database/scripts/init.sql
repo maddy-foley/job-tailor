@@ -91,12 +91,12 @@ CREATE TABLE IF NOT EXISTS skills(
 
 
 -- DROP TABLE IF EXISTS skill_categories;
-
-CREATE TABLE IF NOT EXISTS skill_categories(
-    skill_category_id SERIAL UNIQUE NOT NULL,
-    category_id INTEGER REFERENCES categories(category_id) ON DELETE CASCADE,
-    skill_id INTEGER REFERENCES skills(skill_id) ON DELETE CASCADE
-);
+-- May not need, will FIX
+-- CREATE TABLE IF NOT EXISTS skill_categories(
+--     skill_category_id SERIAL UNIQUE NOT NULL,
+--     category_id INTEGER REFERENCES categories(category_id) ON DELETE CASCADE,
+--     skill_id INTEGER REFERENCES skills(skill_id) ON DELETE CASCADE
+-- );
 
 -- DROP TABLE IF EXISTS application_skills;
 
@@ -159,21 +159,21 @@ INSERT INTO skills(name, category_id)
 SELECT 'Python'
     , categories.category_id
 FROM categories
-WHERE name='Computer Language'
+WHERE categories.name='Computer Language'
 RETURNING *;
 
 INSERT INTO skills(name, category_id)
 SELECT 'Japanese'
      , categories.category_id
 FROM categories
-WHERE name='Natural Language'
+WHERE categories.name='Natural Language'
 RETURNING *;
 
 INSERT INTO skills(name, category_id)
 SELECT 'MacOS'
      , categories.category_id
 FROM categories
-WHERE name='Operating Systems'
+WHERE categories.name='Operating Systems'
 RETURNING *;
 
 INSERT INTO candidate_skills(ability, years_of_experience, candidate_id, skill_id)
@@ -182,7 +182,7 @@ SELECT 1
     , candidates.candidate_id
     , skills.skill_id
 FROM candidates, skills
-WHERE candidates.first_name='jane' AND skills.name='python';
+WHERE candidates.first_name='jane' AND skills.name='Python';
 
 INSERT INTO types(name) VALUES ('job'),('project');
 
@@ -230,5 +230,5 @@ INSERT INTO application_skills(application_id, skill_id)
 SELECT applications.application_id
      , skills.skill_id
 FROM applications, skills
-WHERE applications.company='orenji' AND skills.name='python'
+WHERE applications.company='orenji' AND skills.name='Python'
 RETURNING *;
