@@ -21,8 +21,8 @@ public class AuthConfig {
         an OAuth2 Resource Server, using JWT validation.
         */
         return http.authorizeHttpRequests((authorize) -> authorize
-                        .requestMatchers("/api/public").permitAll()
-                        .requestMatchers("/api/private").authenticated()
+                        .requestMatchers("/api/public/**").permitAll()
+                        .requestMatchers("/api/private/**").authenticated()
                         .requestMatchers("/api/private-scoped").hasAuthority("SCOPE_read:messages")
                 )
                 .cors(withDefaults())

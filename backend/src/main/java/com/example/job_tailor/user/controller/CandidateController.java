@@ -1,6 +1,7 @@
 package com.example.job_tailor.user.controller;
 
 
+import com.example.job_tailor.common.controller.AuthController;
 import com.example.job_tailor.user.dto.CreateCandidateDto;
 import com.example.job_tailor.user.dto.CreateCandidateResponse;
 import com.example.job_tailor.user.model.Candidate;
@@ -35,7 +36,7 @@ public class CandidateController {
         return new ResponseEntity<>(c, HttpStatus.OK);
     }
 
-    @PostMapping("public/candidate/new")
+    @PostMapping("new")
     public ResponseEntity<CreateCandidateResponse> createCandidate(@RequestBody CreateCandidateDto candidateInfo){
         CreateCandidateResponse res = candidateService.createCandidate(candidateInfo);
 
@@ -45,9 +46,9 @@ public class CandidateController {
 
         return new ResponseEntity<>(res, HttpStatus.OK);
     }
-    @PostMapping("public/candidate/{id}/skills")
-    public ResponseEntity<String> addCandidateSkills(@PathVariable("id") Long candidateId,@NonNull List<Skill> skills){
-        String res = candidateService.addCandidateSkills(candidateId,skills);
+    @PostMapping("{id}/skills")
+    public ResponseEntity<String> addCandidateSkills(@PathVariable("id") Long id,@NonNull List<Skill> skills){
+        String res = candidateService.addCandidateSkills(id,skills);
 
         if(res == null){
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);

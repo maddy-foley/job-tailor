@@ -72,21 +72,22 @@ public class CandidateServiceImpl implements CandidateService {
     }
 
     @Override
-    public String addCandidateSkills(Long candidateID,List<Skill> skills){
-        Optional<Candidate> c = candidateRepo.findById(candidateID);
-        if(c.isPresent()){
+    public String addCandidateSkills(Long id,List<Skill> skills){
+        Candidate c = getCandidate(id);
+        if(c != null){
             for(Skill skill : skills){
-                Skill skill1 = findSkill(skill);
+                Skill foundSkill = findOrAddSkill(skill);
                 CandidateSkill cs = new CandidateSkill();
-                cs.setCandidateSkillID(candidateID);
-                cs.getCandidateSkillID(skill1.getSkillID());
+                cs.setSkill(foundSkill);
+                candidateSkillRepo.save(cs);
             }
         } else {
-            return "Error";
+        return "Error";
         }
+        return "worked";
     }
 
-    private Skill findSkill(Skill skill){
+    private Skill findOrAddSkill(Skill skill){
         Skill s = skillRepo.findByName(skill.getName());
         if (s == null){
             Skill skill1 = new Skill();
