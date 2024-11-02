@@ -24,13 +24,12 @@ public class Skill {
     @Column(name = "name", unique = true)
     private String name;
 
-//    @ManyToMany(fetch = FetchType.LAZY)
-//    @JoinTable(
-//        name = "skill_categories",
-//        joinColumns = @JoinColumn(name = "category_id"),
-//        inverseJoinColumns = @JoinColumn(name = "skill_id")
-//    )
-    @Embedded
+    @ManyToMany(fetch = FetchType.LAZY)
+    @JoinTable(
+        name = "skill_categories",
+        joinColumns = @JoinColumn(name = "skill_id"),
+        inverseJoinColumns = @JoinColumn(name = "category_id")
+    )
     Set<Category> categories = new HashSet<>();
 
     public Skill(){}

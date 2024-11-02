@@ -18,7 +18,6 @@ import java.util.*;
 @Component
 @Table(name = "candidates")
 public class Candidate {
-    @EmbeddedId
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "candidate_id", unique = true)
@@ -47,15 +46,13 @@ public class Candidate {
     @Embedded
     private Address address;
 
-
-
-//    @OneToMany
-//    @JoinTable(
-//        name = "candidate_skills",
-//        joinColumns = @JoinColumn(name = "candidate_id"),
-//        inverseJoinColumns = @JoinColumn(name = "skill_id")
-//    )
-//    Set<CandidateSkill> CandidateSkills;
+    @OneToMany
+    @JoinTable(
+        name = "candidate_skills",
+        joinColumns = @JoinColumn(name = "candidate_id"),
+        inverseJoinColumns = @JoinColumn(name = "candidate_skill_id")
+    )
+    Set<CandidateSkill> CandidateSkills;
 
     public Candidate(){
     }
