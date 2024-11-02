@@ -21,7 +21,7 @@ public class Candidate {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "candidate_id", unique = true)
-    private Long candidateID;
+    private Long candidateId;
 
     @NonNull
     @Column(name = "first_name")

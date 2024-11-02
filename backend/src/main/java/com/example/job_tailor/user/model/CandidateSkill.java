@@ -14,12 +14,12 @@ public class CandidateSkill {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "candidate_skill_id", unique = true)
-    private Long candidate_skill_id;
+    private Long candidateSkillId;
 
     @ManyToOne
     @MapsId("candidateId")
     @JoinColumn(name = "candidate_id")
-    private Candidate Candidate;
+    private Candidate candidate;
 
     @ManyToOne
     @MapsId("skillId")

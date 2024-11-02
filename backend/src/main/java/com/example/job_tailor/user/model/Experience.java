@@ -17,7 +17,7 @@ public class Experience {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "experience_id", unique = true)
-    private Long ExperienceID;
+    private Long ExperienceId;
 
     @NonNull
     @Column(name = "name")

@@ -14,7 +14,7 @@ public class Accomplishment {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "accomplishment_id", unique = true)
-    private Long accomplishmentID;
+    private Long accomplishmentId;
 
     @NonNull
     @Column(name = "description")

@@ -20,7 +20,7 @@ public class Address {
 //    @Id
 //    @GeneratedValue(strategy = GenerationType.IDENTITY)
 //    @Column(name = "address_id", unique = true)
-//    private Long addressID;
+//    private Long addressId;
 
     @NonNull
     @Column(name = "email")

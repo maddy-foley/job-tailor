@@ -18,7 +18,7 @@ public class Skill {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "skill_id", unique = true)
-    private Long skillID;
+    private Long skillId;
 
     @NonNull
     @Column(name = "name", unique = true)
