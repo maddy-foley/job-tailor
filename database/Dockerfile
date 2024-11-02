@@ -1,5 +1,7 @@
 FROM postgres:latest
 
-COPY scripts/init.sql /docker-entrypoint-initdb.d/
+ENV POSTGRES_DB mydb;
+
+COPY ./scripts/ /docker-entrypoint-initdb.d/
 
 EXPOSE 5432

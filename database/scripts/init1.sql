@@ -1,6 +1,6 @@
 -- DROP TABLE IF EXISTS candidates;
 
-CREATE TABLE candidates (
+CREATE TABLE IF NOT EXISTS candidates (
     candidate_id SERIAL UNIQUE NOT NULL,
     first_name VARCHAR(15),
     last_name VARCHAR(15),
@@ -10,7 +10,7 @@ CREATE TABLE candidates (
 
 -- DROP TABLE IF EXISTS urls;
 
-CREATE TABLE urls(
+CREATE TABLE IF NOT EXISTS urls(
     url_id SERIAL UNIQUE NOT NULL,
     url VARCHAR(150),
     candidate_id INTEGER NOT NULL REFERENCES candidates(candidate_id) ON DELETE CASCADE
@@ -18,7 +18,7 @@ CREATE TABLE urls(
 
 -- DROP TABLE IF EXISTS addresses;
 
-CREATE TABLE addresses (
+CREATE TABLE IF NOT EXISTS addresses (
     address_id SERIAL UNIQUE NOT NULL,
     email VARCHAR(30),
     phone VARCHAR(15),
