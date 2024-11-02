@@ -1,7 +1,6 @@
 package com.example.job_tailor.user.controller;
 
 
-import com.example.job_tailor.common.controller.AuthController;
 import com.example.job_tailor.user.dto.CreateCandidateDto;
 import com.example.job_tailor.user.dto.CreateCandidateResponse;
 import com.example.job_tailor.user.model.Candidate;
