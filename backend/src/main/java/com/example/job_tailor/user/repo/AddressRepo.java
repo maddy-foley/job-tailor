@@ -6,7 +6,7 @@ import org.springframework.data.rest.core.annotation.RepositoryRestResource;
 import org.springframework.web.bind.annotation.CrossOrigin;
 
 //needs change
-@CrossOrigin("http://localhost:8080")
-@RepositoryRestResource(collectionResourceRel = "address", path = "address")
-public interface AddressRepo extends JpaRepository<Address, Long> {
-}
+//@CrossOrigin("http://localhost:8080")
+//@RepositoryRestResource(collectionResourceRel = "address", path = "address")
+//public interface AddressRepo extends JpaRepository<Address, Long> {
+//}

@@ -5,6 +5,9 @@ import lombok.Getter;
 import lombok.NonNull;
 import lombok.Setter;
 
+import java.util.HashSet;
+import java.util.Set;
+
 
 @Getter
 @Setter
@@ -19,6 +22,9 @@ public class Category {
     @NonNull
     @Column(name = "name")
     private String name;
+
+    @ManyToMany(cascade =CascadeType.ALL, mappedBy = "categories")
+    Set<Skill> skills = new HashSet<>();
 
     public Category(){}
 

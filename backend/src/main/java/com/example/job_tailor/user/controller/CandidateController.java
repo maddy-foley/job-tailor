@@ -35,7 +35,7 @@ public class CandidateController {
         return new ResponseEntity<>(c, HttpStatus.OK);
     }
 
-    @PostMapping("new")
+    @PostMapping("public/candidate/new")
     public ResponseEntity<CreateCandidateResponse> createCandidate(@RequestBody CreateCandidateDto candidateInfo){
         CreateCandidateResponse res = candidateService.createCandidate(candidateInfo);
 

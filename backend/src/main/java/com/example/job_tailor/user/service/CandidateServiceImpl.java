@@ -8,7 +8,6 @@ import com.example.job_tailor.user.model.Address;
 import com.example.job_tailor.user.model.Candidate;
 import com.example.job_tailor.common.model.Skill;
 import com.example.job_tailor.user.model.CandidateSkill;
-import com.example.job_tailor.user.repo.AddressRepo;
 import com.example.job_tailor.user.repo.CandidateRepo;
 import com.example.job_tailor.user.repo.CandidateSkillRepo;
 import jakarta.transaction.Transactional;
@@ -25,8 +24,6 @@ public class CandidateServiceImpl implements CandidateService {
     @Autowired
     private CandidateRepo candidateRepo;
 
-    @Autowired
-    private AddressRepo addressRepo;
 
     @Autowired
     CandidateSkillRepo candidateSkillRepo;
@@ -34,8 +31,7 @@ public class CandidateServiceImpl implements CandidateService {
     @Autowired
     SkillRepo skillRepo;
 
-    public CandidateServiceImpl(CandidateRepo candidateRepo, AddressRepo addressRepo, CandidateSkillRepo candidateSkillRepo,SkillRepo skillRepo){
-        this.addressRepo = addressRepo;
+    public CandidateServiceImpl(CandidateRepo candidateRepo, CandidateSkillRepo candidateSkillRepo,SkillRepo skillRepo){
         this.candidateRepo = candidateRepo;
         this.candidateSkillRepo = candidateSkillRepo;
         this.skillRepo = skillRepo;
@@ -45,7 +41,7 @@ public class CandidateServiceImpl implements CandidateService {
     public CreateCandidateResponse createCandidate(CreateCandidateDto candidateInfo){
 
         Candidate c = new Candidate(candidateInfo.getFirstName(), candidateInfo.getLastName());
-        candidateRepo.save(c);
+
 
         Address a = new Address(
                 candidateInfo.getEmail(),
@@ -54,10 +50,10 @@ public class CandidateServiceImpl implements CandidateService {
                 candidateInfo.getZipCode(),
                 candidateInfo.getCountry(),
                 candidateInfo.getState(),
-                c,
                 candidateInfo.getStreetAddress()
                 );
-        addressRepo.save(a);
+        c.setAddress(a);
+        candidateRepo.save(c);
 
         //ensure both have been saved
         CreateCandidateResponse res = new CreateCandidateResponse();

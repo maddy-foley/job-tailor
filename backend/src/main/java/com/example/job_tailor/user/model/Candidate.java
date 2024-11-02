@@ -18,7 +18,7 @@ import java.util.*;
 @Component
 @Table(name = "candidates")
 public class Candidate {
-
+    @EmbeddedId
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "candidate_id", unique = true)
@@ -44,9 +44,10 @@ public class Candidate {
     @Column(name = "date_updated")
     private Date dateUpdated;
 
-    @OneToMany(fetch = FetchType.EAGER)
-    @JoinColumn(name = "candidate_skill_id")
-    Set<CandidateSkill> candidateSkills;
+    @Embedded
+    private Address address;
+
+
 
 //    @OneToMany
 //    @JoinTable(
@@ -61,6 +62,5 @@ public class Candidate {
     public Candidate(@NonNull String firstName, @NonNull String lastName){
         this.firstName = firstName;
         this.lastName = lastName;
-        this.candidateSkills = new HashSet<>();
     }
 }

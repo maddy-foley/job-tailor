@@ -170,6 +170,7 @@ INSERT INTO skill_categories(skill_id, category_id)
 SELECT skills.skill_id
     , categories.category_id
 FROM skills, categories
+WHERE skills.name='Python' AND categories.name='Computer Language'
 RETURNING *;
 
 

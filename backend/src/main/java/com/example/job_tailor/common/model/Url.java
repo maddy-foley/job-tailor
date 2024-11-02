@@ -19,10 +19,10 @@ public class Url {
     @Column(name = "url")
     private String url;
 
-    @NonNull
-    @ManyToOne
-    @JoinColumn(name = "candidate_id", nullable = false)
-    Candidate candidate;
+//    @NonNull
+//    @ManyToOne
+//    @JoinColumn(name = "candidate_id", nullable = false)
+//    Candidate candidate;
 
     public Url(){}
 }

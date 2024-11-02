@@ -12,14 +12,15 @@ import java.util.Set;
 
 @Getter
 @Setter
-@Entity
+//@Entity
 @Component
-@Table(name = "addresses")
+@Embeddable
+//@Table(name = "addresses")
 public class Address {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "address_id", unique = true)
-    private Long addressID;
+//    @Id
+//    @GeneratedValue(strategy = GenerationType.IDENTITY)
+//    @Column(name = "address_id", unique = true)
+//    private Long addressID;
 
     @NonNull
     @Column(name = "email")
@@ -48,9 +49,9 @@ public class Address {
     @Column(name = "state")
     private String state;
 
-    @OneToOne
-    @JoinColumn(name = "candidate_id",nullable = false)
-    private Candidate candidate;
+//    @OneToOne
+//    @JoinColumn(name = "candidate_id",nullable = false)
+//    private Candidate candidate;
 
     @OneToMany(fetch = FetchType.EAGER)
     @JoinColumn(name = "url_id")
@@ -63,7 +64,7 @@ public class Address {
             @NonNull Integer zipCode,
             @NonNull String country,
             @NonNull String state,
-            Candidate candidate,
+//            Candidate candidate,
             String streetAddress
             ){
         this.email = email;
@@ -73,7 +74,7 @@ public class Address {
         this.country = country;
         this.state = state;
         this.streetAddress = streetAddress;
-        this.candidate = candidate;
+//        this.candidate = candidate;
         this.urls = new HashSet<>();
     }
 }
