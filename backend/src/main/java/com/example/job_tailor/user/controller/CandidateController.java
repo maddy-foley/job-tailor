@@ -5,6 +5,7 @@ import com.example.job_tailor.user.dto.CreateCandidateDto;
 import com.example.job_tailor.user.dto.CreateCandidateResponse;
 import com.example.job_tailor.user.model.Candidate;
 import com.example.job_tailor.common.model.Skill;
+import com.example.job_tailor.user.model.CandidateSkill;
 import com.example.job_tailor.user.service.CandidateService;
 import lombok.NonNull;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -46,17 +47,17 @@ public class CandidateController {
 
         return new ResponseEntity<>(res, HttpStatus.OK);
     }
-    @PostMapping("{id}/skills")
-    public ResponseEntity<String> addCandidateSkills(@PathVariable("id") Long id,@NonNull List<Skill> skills){
-        String res = candidateService.addCandidateSkills(id,skills);
-
-        if(res == null){
-            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
-        }
-
-        return new ResponseEntity<>(res, HttpStatus.OK);
-    }
-    @GetMapping("/candidate/all")
+//    @PostMapping("public/candidate/{id}/skills")
+//    public ResponseEntity<String> addCandidateSkills(@PathVariable("id") Long id,@NonNull List<CandidateSkill> candidateSkills){
+//        String res = candidateService.addCandidateSkills(id, candidateSkills);
+//
+//        if(res == null){
+//            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+//        }
+//
+//        return new ResponseEntity<>(res, HttpStatus.OK);
+//    }
+    @GetMapping("public/candidate/all")
     public ResponseEntity<List<Candidate>> getAllCandidates() {
         List<Candidate> c = candidateService.getAllCandidates();
 
