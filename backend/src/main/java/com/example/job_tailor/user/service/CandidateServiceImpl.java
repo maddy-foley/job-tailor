@@ -8,12 +8,14 @@ import com.example.job_tailor.user.model.Address;
 import com.example.job_tailor.user.model.Candidate;
 import com.example.job_tailor.common.model.Skill;
 import com.example.job_tailor.user.model.CandidateSkill;
+import com.example.job_tailor.user.repo.AddressRepo;
 import com.example.job_tailor.user.repo.CandidateRepo;
 import com.example.job_tailor.user.repo.CandidateSkillRepo;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -24,25 +26,26 @@ public class CandidateServiceImpl implements CandidateService {
     @Autowired
     private CandidateRepo candidateRepo;
 
+    @Autowired
+    private AddressRepo addressRepo;
 
     @Autowired
-    CandidateSkillRepo candidateSkillRepo;
+    private CandidateSkillRepo candidateSkillRepo;
 
     @Autowired
-    SkillRepo skillRepo;
+    private SkillRepo skillRepo;
 
-    public CandidateServiceImpl(CandidateRepo candidateRepo, CandidateSkillRepo candidateSkillRepo,SkillRepo skillRepo){
+    public CandidateServiceImpl(CandidateRepo candidateRepo, CandidateSkillRepo candidateSkillRepo,SkillRepo skillRepo, AddressRepo addressRepo){
         this.candidateRepo = candidateRepo;
         this.candidateSkillRepo = candidateSkillRepo;
         this.skillRepo = skillRepo;
+        this.addressRepo = addressRepo;
     }
     @Override
-    @Transactional
     public CreateCandidateResponse createCandidate(CreateCandidateDto candidateInfo){
 
         Candidate c = new Candidate(candidateInfo.getFirstName(), candidateInfo.getLastName());
-
-
+        candidateRepo.save(c);
         Address a = new Address(
                 candidateInfo.getEmail(),
                 candidateInfo.getPhone(),
@@ -50,11 +53,10 @@ public class CandidateServiceImpl implements CandidateService {
                 candidateInfo.getZipCode(),
                 candidateInfo.getCountry(),
                 candidateInfo.getState(),
-                candidateInfo.getStreetAddress()
-                );
-        c.setAddress(a);
-        candidateRepo.save(c);
-
+                candidateInfo.getStreetAddress(),
+                c
+        );
+        addressRepo.save(a);
         //ensure both have been saved
         CreateCandidateResponse res = new CreateCandidateResponse();
         res.setFirstName(c.getFirstName());
@@ -93,5 +95,10 @@ public class CandidateServiceImpl implements CandidateService {
         } else {
             return s;
         }
+    }
+
+    @Override
+    public List<Candidate> getAllCandidates(){
+        return (List<Candidate>) candidateRepo.findAll();
     }
 }

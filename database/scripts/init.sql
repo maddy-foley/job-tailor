@@ -17,7 +17,7 @@ CREATE TABLE IF NOT EXISTS urls(
 );
 
 -- DROP TABLE IF EXISTS addresses;
-
+--
 CREATE TABLE IF NOT EXISTS addresses (
     address_id SERIAL UNIQUE NOT NULL,
     email VARCHAR(30),
@@ -137,7 +137,7 @@ SELECT 'Facebook.com'
 FROM candidates
 RETURNING *;
 
-INSERT INTO addresses(email, phone, street_address, city, zip_code, state, country, candidate_id, url_id)
+INSERT INTO addresses(email, phone, street_address, city, zip_code, state, country, candidate_id)
 SELECT 'jdoe@fakeemail.com'
     , '2679943078'
     , '123 main st'
@@ -146,9 +146,8 @@ SELECT 'jdoe@fakeemail.com'
     , 'Oregon'
     , 'USA'
     , candidates.candidate_id
-    , urls.url_id
-FROM candidates, urls
-WHERE candidates.first_name = 'jane' and urls.candidate_id = candidates.candidate_id
+FROM candidates
+WHERE candidates.first_name = 'jane'
 RETURNING  *;
 
 INSERT INTO categories(name)
@@ -180,7 +179,7 @@ SELECT 1
     , candidates.candidate_id
     , skills.skill_id
 FROM candidates, skills
-WHERE candidates.first_name='jane' AND skills.name='Python';
+WHERE candidates.first_name='jane' AND skills.name='Japanese';
 
 INSERT INTO types(name) VALUES ('job'),('project');
 

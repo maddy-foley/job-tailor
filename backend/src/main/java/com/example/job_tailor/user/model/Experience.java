@@ -38,16 +38,17 @@ public class Experience {
 
     // don't cascade delete type
     @ManyToOne
-    @JoinColumn(name="type_id", nullable = false)
-    Type type;
+    @JoinColumn(name="type_id")
+    private Type type;
 
     @ManyToOne
-    @JoinColumn(name = "candidate_id", nullable = false)
-    Candidate candidate;
+    @JoinColumn(name = "candidate_id")
+    private Candidate candidate;
 
-    @OneToOne
-    @JoinColumn(name = "url_id", nullable = false)
-    private Url url;
+//   FIX
+//    @OneToOne
+//    @JoinColumn(name = "url_id", nullable = false)
+//    private Url url;
 
     public Experience(){}
 }

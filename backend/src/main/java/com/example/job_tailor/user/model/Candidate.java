@@ -43,16 +43,11 @@ public class Candidate {
     @Column(name = "date_updated")
     private Date dateUpdated;
 
-    @Embedded
-    private Address address;
+    @OneToMany(mappedBy = "candidate", cascade = CascadeType.ALL, orphanRemoval = true)
+    Set<CandidateSkill> CandidateSkills = new HashSet<>();
 
-    @OneToMany
-    @JoinTable(
-        name = "candidate_skills",
-        joinColumns = @JoinColumn(name = "candidate_id"),
-        inverseJoinColumns = @JoinColumn(name = "candidate_skill_id")
-    )
-    Set<CandidateSkill> CandidateSkills;
+//    @OneToMany(mappedBy = "experience", cascade = CascadeType.ALL, orphanRemoval = true)
+//    Set<Experience> experiences = new HashSet<>();
 
     public Candidate(){
     }

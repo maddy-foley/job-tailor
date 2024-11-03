@@ -12,4 +12,6 @@ public interface CandidateService {
     Candidate getCandidate(Long candidateID);
     String addCandidateSkills(Long candidateId,List<Skill> skills);
 
+    List<Candidate> getAllCandidates();
+
 }

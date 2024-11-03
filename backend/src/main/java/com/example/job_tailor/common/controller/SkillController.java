@@ -3,6 +3,7 @@ package com.example.job_tailor.common.controller;
 import com.example.job_tailor.common.model.Skill;
 import com.example.job_tailor.common.service.SkillService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.ComponentScan;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -10,6 +11,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+@ComponentScan
 @RestController
 @RequestMapping(value = "api",produces = MediaType.APPLICATION_JSON_VALUE)
 public class SkillController {
@@ -21,7 +23,7 @@ public class SkillController {
     public SkillController(SkillService skillService){ this.skillService = skillService; }
 
     // FUTURE EDITS NEEDED
-    @PostMapping("public/skill/new")
+    @PostMapping("/public/skill/new")
     public ResponseEntity<List<Skill>> createSkill(@RequestBody List<Skill> skills){
         List<Skill> createdSkill = skillService.createSkills(skills);
 
@@ -34,7 +36,7 @@ public class SkillController {
     //make private
 
 
-    @GetMapping("public/skill/all")
+    @GetMapping("/public/skill/all")
     public ResponseEntity<List<Skill>> getSkills(){
         List<Skill> skills = skillService.getSkills();
         if(skills == null){

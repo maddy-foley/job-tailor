@@ -8,6 +8,7 @@ import com.example.job_tailor.common.model.Skill;
 import com.example.job_tailor.user.service.CandidateService;
 import lombok.NonNull;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.ComponentScan;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -15,7 +16,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-
+@ComponentScan
 @RestController
 @RequestMapping(value = "api", produces = MediaType.APPLICATION_JSON_VALUE)
 public class CandidateController {
@@ -55,4 +56,13 @@ public class CandidateController {
 
         return new ResponseEntity<>(res, HttpStatus.OK);
     }
+    @GetMapping("/candidate/all")
+    public ResponseEntity<List<Candidate>> getAllCandidates() {
+        List<Candidate> c = candidateService.getAllCandidates();
+
+        return new ResponseEntity<>(c, HttpStatus.OK);
+    }
+
 }
+
+

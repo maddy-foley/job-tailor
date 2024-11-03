@@ -12,15 +12,14 @@ import java.util.Set;
 
 @Getter
 @Setter
-//@Entity
+@Entity
 @Component
-@Embeddable
-//@Table(name = "addresses")
+@Table(name = "addresses")
 public class Address {
-//    @Id
-//    @GeneratedValue(strategy = GenerationType.IDENTITY)
-//    @Column(name = "address_id", unique = true)
-//    private Long addressId;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "address_id", unique = true)
+    private Long addressId;
 
     @NonNull
     @Column(name = "email")
@@ -49,13 +48,13 @@ public class Address {
     @Column(name = "state")
     private String state;
 
-//    @OneToOne
-//    @JoinColumn(name = "candidate_id",nullable = false)
-//    private Candidate candidate;
+    @OneToOne
+    @JoinColumn(name = "candidate_id")
+    private Candidate candidate;
 
-    @OneToMany(fetch = FetchType.EAGER)
-    @JoinColumn(name = "url_id")
-    private Set<Url> urls;
+//    @OneToMany(fetch = FetchType.EAGER)
+//    @JoinColumn(name = "url_id")
+//    private Set<Url> urls;
     public Address(){}
     public Address(
             @NonNull String email,
@@ -64,8 +63,8 @@ public class Address {
             @NonNull Integer zipCode,
             @NonNull String country,
             @NonNull String state,
-//            Candidate candidate,
-            String streetAddress
+            String streetAddress,
+            Candidate candidate
             ){
         this.email = email;
         this.phone = phone;
@@ -74,7 +73,6 @@ public class Address {
         this.country = country;
         this.state = state;
         this.streetAddress = streetAddress;
-//        this.candidate = candidate;
-        this.urls = new HashSet<>();
+        this.candidate = candidate;
     }
 }
