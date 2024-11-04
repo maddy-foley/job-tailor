@@ -3,19 +3,17 @@ package com.example.job_tailor.user.service;
 
 import com.example.job_tailor.common.repo.SkillRepo;
 import com.example.job_tailor.user.dto.CreateCandidateDto;
-import com.example.job_tailor.user.dto.CreateCandidateResponse;
+import com.example.job_tailor.user.dto.response.CreateCandidateResponse;
+import com.example.job_tailor.user.dto.response.GetCandidateByIdResponse;
 import com.example.job_tailor.user.model.Address;
 import com.example.job_tailor.user.model.Candidate;
 import com.example.job_tailor.common.model.Skill;
-import com.example.job_tailor.user.model.CandidateSkill;
 import com.example.job_tailor.user.repo.AddressRepo;
 import com.example.job_tailor.user.repo.CandidateRepo;
 import com.example.job_tailor.user.repo.CandidateSkillRepo;
-import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -43,9 +41,6 @@ public class CandidateServiceImpl implements CandidateService {
     }
     @Override
     public CreateCandidateResponse createCandidate(CreateCandidateDto candidateInfo){
-
-        Candidate c = new Candidate(candidateInfo.getFirstName(), candidateInfo.getLastName());
-        candidateRepo.save(c);
         Address a = new Address(
                 candidateInfo.getEmail(),
                 candidateInfo.getPhone(),
@@ -53,10 +48,11 @@ public class CandidateServiceImpl implements CandidateService {
                 candidateInfo.getZipCode(),
                 candidateInfo.getCountry(),
                 candidateInfo.getState(),
-                candidateInfo.getStreetAddress(),
-                c
+                candidateInfo.getStreetAddress()
         );
         addressRepo.save(a);
+        Candidate c = new Candidate(candidateInfo.getFirstName(), candidateInfo.getLastName(),a);
+        candidateRepo.save(c);
         //ensure both have been saved
         CreateCandidateResponse res = new CreateCandidateResponse();
         res.setFirstName(c.getFirstName());
@@ -65,8 +61,18 @@ public class CandidateServiceImpl implements CandidateService {
     }
 
     @Override
-    public Candidate getCandidate(Long id) {
-       return candidateRepo.findById(id).orElse(null);
+    public GetCandidateByIdResponse getCandidate(Long id) {
+        GetCandidateByIdResponse res = new GetCandidateByIdResponse();
+        Candidate c = candidateRepo.findById(id).orElse(null);
+        System.out.println(c);
+        if (c == null){
+            return null;
+
+        }
+        res.setFirstName(c.getFirstName());
+        res.setLastName(c.getLastName());
+        res.setAddress(c.getAddress());
+        return res;
     }
 
 //    @Override
@@ -84,17 +90,17 @@ public class CandidateServiceImpl implements CandidateService {
 //        return "worked";
 //    }
 
-    private Skill findOrAddSkill(Skill skill){
-        Skill s = skillRepo.findByName(skill.getName());
-        if (s == null){
-            Skill skill1 = new Skill();
-            skill1.setName(skill.getName());
-            skillRepo.save(skill1);
-            return skill1;
-        } else {
-            return s;
-        }
-    }
+//    private Skill findOrAddSkill(Skill skill){
+//        Skill s = skillRepo.findByName(skill.getName());
+//        if (s == null){
+//            Skill skill1 = new Skill();
+//            skill1.setName(skill.getName());
+//            skillRepo.save(skill1);
+//            return skill1;
+//        } else {
+//            return s;
+//        }
+//    }
 
     @Override
     public List<Candidate> getAllCandidates(){

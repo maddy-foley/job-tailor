@@ -2,12 +2,11 @@ package com.example.job_tailor.user.controller;
 
 
 import com.example.job_tailor.user.dto.CreateCandidateDto;
-import com.example.job_tailor.user.dto.CreateCandidateResponse;
+import com.example.job_tailor.user.dto.response.CreateCandidateResponse;
+import com.example.job_tailor.user.dto.response.GetCandidateByIdResponse;
+import com.example.job_tailor.user.model.Address;
 import com.example.job_tailor.user.model.Candidate;
-import com.example.job_tailor.common.model.Skill;
-import com.example.job_tailor.user.model.CandidateSkill;
 import com.example.job_tailor.user.service.CandidateService;
-import lombok.NonNull;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.http.HttpStatus;
@@ -30,13 +29,14 @@ public class CandidateController {
         this.candidateService = candidateService;
     }
     //make private
+    // WORKING
     @GetMapping("public/candidate/{id}")
-    public ResponseEntity<Candidate> getCandidate(@PathVariable("id") Long id) {
-        Candidate c = candidateService.getCandidate(id);
+    public ResponseEntity<GetCandidateByIdResponse> getCandidate(@PathVariable("id") Long id) {
+        GetCandidateByIdResponse c = candidateService.getCandidate(id);
 
         return new ResponseEntity<>(c, HttpStatus.OK);
     }
-
+    //FIX
     @PostMapping("public/candidate/new")
     public ResponseEntity<CreateCandidateResponse> createCandidate(@RequestBody CreateCandidateDto candidateInfo){
         CreateCandidateResponse res = candidateService.createCandidate(candidateInfo);
@@ -57,6 +57,7 @@ public class CandidateController {
 //
 //        return new ResponseEntity<>(res, HttpStatus.OK);
 //    }
+    //WORKING
     @GetMapping("public/candidate/all")
     public ResponseEntity<List<Candidate>> getAllCandidates() {
         List<Candidate> c = candidateService.getAllCandidates();

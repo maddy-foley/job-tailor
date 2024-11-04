@@ -24,7 +24,7 @@ public class Skill {
     @Column(name = "name", unique = true)
     private String name;
 
-    @ManyToMany(fetch = FetchType.LAZY)
+    @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(
         name = "skill_categories",
         joinColumns = @JoinColumn(name = "skill_id"),

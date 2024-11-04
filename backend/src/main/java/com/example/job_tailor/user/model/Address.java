@@ -47,10 +47,10 @@ public class Address {
     @NonNull
     @Column(name = "state")
     private String state;
-
-    @OneToOne
-    @JoinColumn(name = "candidate_id")
-    private Candidate candidate;
+//
+//    @OneToOne
+//    @JoinColumn(name = "candidate_id")
+//    private Candidate candidate;
 
 //    @OneToMany(fetch = FetchType.EAGER)
 //    @JoinColumn(name = "url_id")
@@ -63,8 +63,7 @@ public class Address {
             @NonNull Integer zipCode,
             @NonNull String country,
             @NonNull String state,
-            String streetAddress,
-            Candidate candidate
+            String streetAddress
             ){
         this.email = email;
         this.phone = phone;
@@ -73,6 +72,5 @@ public class Address {
         this.country = country;
         this.state = state;
         this.streetAddress = streetAddress;
-        this.candidate = candidate;
     }
 }

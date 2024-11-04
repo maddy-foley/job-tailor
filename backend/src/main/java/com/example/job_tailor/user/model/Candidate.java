@@ -43,6 +43,10 @@ public class Candidate {
     @Column(name = "date_updated")
     private Date dateUpdated;
 
+    @OneToOne
+    @JoinColumn(name = "address_id")
+    private Address address;
+
 //    @OneToMany(mappedBy = "candidate", cascade = CascadeType.ALL, orphanRemoval = true)
 //    Set<CandidateSkill> CandidateSkills = new HashSet<>();
 
@@ -51,8 +55,9 @@ public class Candidate {
 
     public Candidate(){
     }
-    public Candidate(@NonNull String firstName, @NonNull String lastName){
+    public Candidate(@NonNull String firstName, @NonNull String lastName, Address address){
         this.firstName = firstName;
         this.lastName = lastName;
+        this.address = address;
     }
 }

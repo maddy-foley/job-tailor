@@ -1,16 +1,15 @@
 package com.example.job_tailor.user.service;
 
 import com.example.job_tailor.user.dto.CreateCandidateDto;
-import com.example.job_tailor.user.dto.CreateCandidateResponse;
+import com.example.job_tailor.user.dto.response.CreateCandidateResponse;
+import com.example.job_tailor.user.dto.response.GetCandidateByIdResponse;
 import com.example.job_tailor.user.model.Candidate;
-import com.example.job_tailor.common.model.Skill;
-import com.example.job_tailor.user.model.CandidateSkill;
 
 import java.util.List;
 
 public interface CandidateService {
     CreateCandidateResponse createCandidate(CreateCandidateDto candidateInfo);
-    Candidate getCandidate(Long candidateID);
+    GetCandidateByIdResponse getCandidate(Long candidateID);
 
     List<Candidate> getAllCandidates();
 

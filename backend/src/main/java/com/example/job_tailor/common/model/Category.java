@@ -23,9 +23,6 @@ public class Category {
     @Column(name = "name")
     private String name;
 
-    @ManyToMany(cascade = CascadeType.ALL, mappedBy = "categories")
-    Set<Skill> skills = new HashSet<>();
-
     public Category(){}
 
 }
