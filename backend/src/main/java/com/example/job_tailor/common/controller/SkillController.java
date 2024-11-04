@@ -24,17 +24,15 @@ public class SkillController {
 
     // FUTURE EDITS NEEDED
     @PostMapping("/public/skill/new")
-    public ResponseEntity<List<Skill>> createSkill(@RequestBody List<Skill> skills){
-        List<Skill> createdSkill = skillService.createSkills(skills);
-
+    public ResponseEntity<Skill> createSkill(@RequestBody Skill skill){
+        Skill createdSkill = skillService.createSkill(skill);
         if(createdSkill == null ){
             return ResponseEntity.notFound().build();
         } else {
-            return new ResponseEntity<>(skills, HttpStatus.OK);
+            return new ResponseEntity<>(skill, HttpStatus.OK);
         }
     }
     //make private
-
 
     @GetMapping("/public/skill/all")
     public ResponseEntity<List<Skill>> getSkills(){

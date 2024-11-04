@@ -19,15 +19,15 @@ public class SkillServiceImpl implements SkillService {
 
 
     @Override
-    public List<Skill> createSkills(@NonNull List<Skill> skills) {
-        for (Skill skill : skills){
-            Skill s = new Skill();
-            s.setName(skill.getName());
-            skillRepo.save(s);
+    public Skill createSkill(@NonNull Skill skill) {
+        Skill s = skillRepo.findByName(skill.getName());
+        if (s == null){
+            skillRepo.save(skill);
         }
+        return skillRepo.findByName(skill.getName());
+    }
 
-        return skillRepo.findAll();
-    };
+
 
     //delete later
     @Override
