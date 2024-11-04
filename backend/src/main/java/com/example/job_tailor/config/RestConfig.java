@@ -1,6 +1,7 @@
 package com.example.job_tailor.config;
 
 import com.example.job_tailor.application.model.ApplicationSkill;
+import com.example.job_tailor.common.model.Category;
 import com.example.job_tailor.common.model.Skill;
 import com.example.job_tailor.user.model.Address;
 import com.example.job_tailor.user.model.Candidate;
@@ -19,5 +20,6 @@ public class RestConfig implements RepositoryRestConfigurer {
         config.exposeIdsFor(Skill.class);
         config.exposeIdsFor(ApplicationSkill.class);
         config.exposeIdsFor(CandidateSkill.class);
+        config.exposeIdsFor(Category.class);
     }
 }
