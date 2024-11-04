@@ -4,7 +4,6 @@ package com.example.job_tailor.user.controller;
 import com.example.job_tailor.user.dto.CreateCandidateDto;
 import com.example.job_tailor.user.dto.response.CreateCandidateResponse;
 import com.example.job_tailor.user.dto.response.GetCandidateByIdResponse;
-import com.example.job_tailor.user.model.Address;
 import com.example.job_tailor.user.model.Candidate;
 import com.example.job_tailor.user.service.CandidateService;
 import org.springframework.beans.factory.annotation.Autowired;

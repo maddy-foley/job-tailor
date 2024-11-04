@@ -54,9 +54,7 @@ public class CandidateServiceImpl implements CandidateService {
         Candidate c = new Candidate(candidateInfo.getFirstName(), candidateInfo.getLastName(),a);
         candidateRepo.save(c);
         //ensure both have been saved
-        CreateCandidateResponse res = new CreateCandidateResponse();
-        res.setFirstName(c.getFirstName());
-
+        CreateCandidateResponse res = new CreateCandidateResponse(c.getFirstName());
         return res;
     }
 

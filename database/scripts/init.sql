@@ -1,34 +1,34 @@
--- DROP TABLE IF EXISTS candidates;
 
+
+-- DROP TABLE IF EXISTS addresses;
+CREATE TABLE IF NOT EXISTS addresses (
+     address_id SERIAL UNIQUE NOT NULL,
+     email VARCHAR(30),
+     phone VARCHAR(15),
+     street_address VARCHAR(35),
+     city VARCHAR(15),
+     zip_code INTEGER,
+     state VARCHAR(20),
+     country VARCHAR(30)
+);
+
+-- DROP TABLE IF EXISTS candidates;
 CREATE TABLE IF NOT EXISTS candidates (
     candidate_id SERIAL UNIQUE NOT NULL,
     first_name VARCHAR(15),
     last_name VARCHAR(15),
     date_created DATE,
-    date_updated DATE DEFAULT NULL
+    date_updated DATE DEFAULT NULL,
+    address_id INTEGER NOT NULL REFERENCES addresses(address_id) ON DELETE CASCADE
 );
+
 
 -- DROP TABLE IF EXISTS urls;
 
 CREATE TABLE IF NOT EXISTS urls(
-    url_id SERIAL UNIQUE NOT NULL,
-    url VARCHAR(150),
-    candidate_id INTEGER NOT NULL REFERENCES candidates(candidate_id) ON DELETE CASCADE
-);
-
--- DROP TABLE IF EXISTS addresses;
---
-CREATE TABLE IF NOT EXISTS addresses (
-    address_id SERIAL UNIQUE NOT NULL,
-    email VARCHAR(30),
-    phone VARCHAR(15),
-    street_address VARCHAR(35),
-    city VARCHAR(15),
-    zip_code INTEGER,
-    state VARCHAR(20),
-    country VARCHAR(30),
-    candidate_id INTEGER NOT NULL REFERENCES candidates(candidate_id) ON DELETE CASCADE,
-    url_id INTEGER REFERENCES urls(url_id)
+       url_id SERIAL UNIQUE NOT NULL,
+       url VARCHAR(150),
+       candidate_id INTEGER NOT NULL REFERENCES candidates(candidate_id) ON DELETE CASCADE
 );
 
 -- DROP TABLE IF EXISTS types;
@@ -122,13 +122,6 @@ TESTING INSERT DATA
 */
 
 
-INSERT INTO candidates (first_name, last_name, date_created)
-VALUES (
-        'jane'
-       , 'doe'
-       , NOW()
-       )
-RETURNING *;
 
 
 INSERT INTO urls (url, candidate_id)
@@ -137,7 +130,7 @@ SELECT 'Facebook.com'
 FROM candidates
 RETURNING *;
 
-INSERT INTO addresses(email, phone, street_address, city, zip_code, state, country, candidate_id)
+INSERT INTO addresses(email, phone, street_address, city, zip_code, state, country)
 SELECT 'jdoe@fakeemail.com'
     , '2679943078'
     , '123 main st'
@@ -145,10 +138,16 @@ SELECT 'jdoe@fakeemail.com'
     , 97215
     , 'Oregon'
     , 'USA'
-    , candidates.candidate_id
-FROM candidates
-WHERE candidates.first_name = 'jane'
 RETURNING  *;
+
+INSERT INTO candidates (first_name, last_name, date_created, address_id)
+VALUES (
+         'jane'
+       , 'doe'
+       , NOW()
+        , 1
+       )
+RETURNING *;
 
 INSERT INTO categories(name)
 VALUES ('Operating Systems'),('Computer Language'),('Natural Language');

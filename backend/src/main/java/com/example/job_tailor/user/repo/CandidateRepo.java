@@ -6,6 +6,6 @@ import org.springframework.data.rest.core.annotation.RepositoryRestResource;
 import org.springframework.web.bind.annotation.CrossOrigin;
 
 @CrossOrigin("http://localhost:8080")
-@RepositoryRestResource(collectionResourceRel = "candidate", path = "candidate")
+//@RepositoryRestResource(collectionResourceRel = "candidate", path = "candidate")
 public interface CandidateRepo extends CrudRepository<Candidate, Long> {
 }
