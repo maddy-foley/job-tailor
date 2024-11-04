@@ -9,4 +9,5 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 @RepositoryRestResource(collectionResourceRel = "skill", path = "skill")
 public interface SkillRepo extends JpaRepository<Skill, Long> {
     Skill findByName(String name);
+    Skill findBySkillId(Long skillId);
 }

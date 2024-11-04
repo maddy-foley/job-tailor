@@ -30,7 +30,16 @@ public class Skill {
         joinColumns = @JoinColumn(name = "skill_id"),
         inverseJoinColumns = @JoinColumn(name = "category_id")
     )
-    Set<Category> categories = new HashSet<>();
+    Set<Category> categories;
 
     public Skill(){}
+
+    public void addCategory(Category category){
+        if(category != null){
+            if (categories == null){
+                 this.categories = new HashSet<>();
+            }
+            this.categories.add(category);
+        }
+    }
 }

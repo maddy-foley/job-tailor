@@ -1,6 +1,8 @@
 package com.example.job_tailor.common.controller;
 
+import com.example.job_tailor.common.model.Category;
 import com.example.job_tailor.common.model.Skill;
+import com.example.job_tailor.common.service.CategoryService;
 import com.example.job_tailor.common.service.SkillService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.ComponentScan;
@@ -18,9 +20,15 @@ public class SkillController {
     @Autowired
     private SkillService skillService;
 
+    @Autowired
+    private CategoryService categoryService;
 
 
-    public SkillController(SkillService skillService){ this.skillService = skillService; }
+
+    public SkillController(SkillService skillService, CategoryService categoryService){
+        this.skillService = skillService;
+        this.categoryService = categoryService;
+    }
 
     // FUTURE EDITS NEEDED
     @PostMapping("/public/skill/new")
@@ -33,6 +41,16 @@ public class SkillController {
         }
     }
     //make private
+
+    @PutMapping("/public/skill/{id}")
+    public ResponseEntity<Skill> updatedSkill(@PathVariable("id") Long id, @RequestBody Category category){
+        Category c = categoryService.createCategory(category);
+        Skill updatedSkill = skillService.updateSkill(id, c);
+        if(updatedSkill == null){
+            return ResponseEntity.badRequest().build();
+        }
+        return new ResponseEntity<>(updatedSkill, HttpStatus.OK);
+    }
 
     @GetMapping("/public/skill/all")
     public ResponseEntity<List<Skill>> getSkills(){
