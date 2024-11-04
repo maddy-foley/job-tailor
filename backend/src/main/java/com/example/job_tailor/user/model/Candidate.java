@@ -60,4 +60,5 @@ public class Candidate {
         this.lastName = lastName;
         this.address = address;
     }
+
 }

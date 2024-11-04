@@ -2,12 +2,15 @@ package com.example.job_tailor.user.service;
 
 
 import com.example.job_tailor.common.repo.SkillRepo;
+import com.example.job_tailor.user.dto.AddCandidateSkillDto;
 import com.example.job_tailor.user.dto.CreateCandidateDto;
+import com.example.job_tailor.user.dto.response.AddCandidateSkillResponse;
 import com.example.job_tailor.user.dto.response.CreateCandidateResponse;
 import com.example.job_tailor.user.dto.response.GetCandidateByIdResponse;
 import com.example.job_tailor.user.model.Address;
 import com.example.job_tailor.user.model.Candidate;
 import com.example.job_tailor.common.model.Skill;
+import com.example.job_tailor.user.model.CandidateSkill;
 import com.example.job_tailor.user.repo.AddressRepo;
 import com.example.job_tailor.user.repo.CandidateRepo;
 import com.example.job_tailor.user.repo.CandidateSkillRepo;
@@ -72,6 +75,24 @@ public class CandidateServiceImpl implements CandidateService {
         res.setAddress(c.getAddress());
         return res;
     }
+    @Override
+    public AddCandidateSkillResponse addCandidateSkill(Long id, Long skill_id, AddCandidateSkillDto candidateSkillDto){
+        Candidate c = candidateRepo.findById(id).orElse(null);
+        Skill s = skillRepo.findBySkillId(skill_id);
+        if(c == null || s == null){
+            return null;
+        }
+        CandidateSkill cs = new CandidateSkill();
+        cs.setSkill(s);
+        cs.setCandidate(c);
+        cs.setAbility(candidateSkillDto.getAbility());
+        cs.setYearsOfExperience(candidateSkillDto.getYearsOfExperience());
+        candidateSkillRepo.save(cs);
+
+        AddCandidateSkillResponse res = new AddCandidateSkillResponse(cs.getSkill().getName(), cs.getAbility(), cs.getYearsOfExperience(),cs.getSkill().getCategories());
+        return res;
+    }
+
 
 //    @Override
 //    public String addCandidateSkills(Long id,List<CandidateSkill> candidateSkills){

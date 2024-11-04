@@ -1,10 +1,14 @@
 package com.example.job_tailor.user.controller;
 
 
+import com.example.job_tailor.common.model.Skill;
+import com.example.job_tailor.user.dto.AddCandidateSkillDto;
 import com.example.job_tailor.user.dto.CreateCandidateDto;
+import com.example.job_tailor.user.dto.response.AddCandidateSkillResponse;
 import com.example.job_tailor.user.dto.response.CreateCandidateResponse;
 import com.example.job_tailor.user.dto.response.GetCandidateByIdResponse;
 import com.example.job_tailor.user.model.Candidate;
+import com.example.job_tailor.user.model.CandidateSkill;
 import com.example.job_tailor.user.service.CandidateService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.ComponentScan;
@@ -22,7 +26,6 @@ public class CandidateController {
 
     @Autowired
     private CandidateService candidateService;
-
 
     public CandidateController(CandidateService candidateService){
         this.candidateService = candidateService;
@@ -46,16 +49,15 @@ public class CandidateController {
 
         return new ResponseEntity<>(res, HttpStatus.OK);
     }
-//    @PostMapping("public/candidate/{id}/skills")
-//    public ResponseEntity<String> addCandidateSkills(@PathVariable("id") Long id,@NonNull List<CandidateSkill> candidateSkills){
-//        String res = candidateService.addCandidateSkills(id, candidateSkills);
-//
-//        if(res == null){
-//            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
-//        }
-//
-//        return new ResponseEntity<>(res, HttpStatus.OK);
-//    }
+    @PostMapping("public/candidate/{id}/skill/{skill_id}")
+    public ResponseEntity<AddCandidateSkillResponse> addCandidateSkill(@PathVariable("id") Long id, @PathVariable("skill_id") Long skill_id, @RequestBody AddCandidateSkillDto candidateSkillDto){
+        AddCandidateSkillResponse cs = candidateService.addCandidateSkill(id,skill_id, candidateSkillDto);
+        if(cs == null){
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        }
+
+        return new ResponseEntity<>(cs, HttpStatus.OK);
+    }
     //WORKING
     @GetMapping("public/candidate/all")
     public ResponseEntity<List<Candidate>> getAllCandidates() {
@@ -63,6 +65,11 @@ public class CandidateController {
 
         return new ResponseEntity<>(c, HttpStatus.OK);
     }
+
+//    @PutMapping("public/candidate/{id}")
+//    public ResponseEntity<Candidate> updateCandidate(@PathVariable("id") Long id){
+//        Candidate c = candidateService.updateCandidate();
+//    }
 
 }
 
