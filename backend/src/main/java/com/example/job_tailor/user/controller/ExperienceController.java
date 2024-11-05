@@ -1,5 +1,6 @@
 package com.example.job_tailor.user.controller;
 
+import com.example.job_tailor.user.dto.response.ExperienceResponse;
 import com.example.job_tailor.user.model.Experience;
 import com.example.job_tailor.user.service.ExperienceService;
 import lombok.NonNull;
@@ -29,8 +30,8 @@ public class ExperienceController {
     }
 
     @GetMapping("public/candidate/{id}/experience/all")
-    public ResponseEntity<Set<Experience>> getCandidateExperience(@PathVariable("id") Long id){
-       Set<Experience> experiences = experienceService.getCandidateExperience(id);
+    public ResponseEntity<Set<ExperienceResponse>> getCandidateExperience(@PathVariable("id") Long id){
+       Set<ExperienceResponse> experiences = experienceService.getCandidateExperience(id);
 
         return new ResponseEntity<>(experiences,HttpStatus.OK);
     }

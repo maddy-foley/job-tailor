@@ -1,5 +1,6 @@
 package com.example.job_tailor.user.service;
 
+import com.example.job_tailor.user.dto.response.ExperienceResponse;
 import com.example.job_tailor.user.model.Candidate;
 import com.example.job_tailor.user.model.Experience;
 import com.example.job_tailor.user.repo.CandidateRepo;
@@ -7,6 +8,7 @@ import com.example.job_tailor.user.repo.ExperienceRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
@@ -36,12 +38,25 @@ public class ExperienceServiceImpl implements ExperienceService{
     }
 
     @Override
-    public Set<Experience> getCandidateExperience(Long id){
+    public Set<ExperienceResponse> getCandidateExperience(Long id){
         Candidate c = candidateRepo.findById(id).orElse(null);
         if(c == null){
             return null;
         }
-        return c.getExperiences();
+        Set<ExperienceResponse> expResSet = new HashSet<>();
+        Set<Experience> es = c.getExperiences();
+        for(Experience e:es){
+            ExperienceResponse expRes = new ExperienceResponse();
+            expRes.setName(e.getName());
+            expRes.setDescription(e.getDescription());
+            expRes.setEstablishment(e.getEstablishment());
+            expRes.setStartDate(e.getStartDate());
+            expRes.setEndDate(e.getEndDate());
+            expRes.setType(e.getType().getName());
+            expResSet.add(expRes);
+        }
+
+        return expResSet;
     }
 
     @Override
