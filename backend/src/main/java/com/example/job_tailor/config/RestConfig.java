@@ -6,6 +6,7 @@ import com.example.job_tailor.common.model.Skill;
 import com.example.job_tailor.user.model.Address;
 import com.example.job_tailor.user.model.Candidate;
 import com.example.job_tailor.user.model.CandidateSkill;
+import com.example.job_tailor.user.model.Experience;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.data.rest.webmvc.config.RepositoryRestConfigurer;
 import org.springframework.web.servlet.config.annotation.CorsRegistry;
@@ -21,5 +22,6 @@ public class RestConfig implements RepositoryRestConfigurer {
         config.exposeIdsFor(ApplicationSkill.class);
         config.exposeIdsFor(CandidateSkill.class);
         config.exposeIdsFor(Category.class);
+        config.exposeIdsFor(Experience.class);
     }
 }

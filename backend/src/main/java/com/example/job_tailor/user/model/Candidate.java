@@ -50,8 +50,8 @@ public class Candidate {
 //    @OneToMany(mappedBy = "candidate", cascade = CascadeType.ALL, orphanRemoval = true)
 //    Set<CandidateSkill> CandidateSkills = new HashSet<>();
 
-//    @OneToMany(mappedBy = "experience", cascade = CascadeType.ALL, orphanRemoval = true)
-//    Set<Experience> experiences = new HashSet<>();
+    @OneToMany(mappedBy = "experience", cascade = CascadeType.ALL, orphanRemoval = true)
+    Set<Experience> experiences;
 
     public Candidate(){
     }
@@ -61,4 +61,10 @@ public class Candidate {
         this.address = address;
     }
 
+    public void addExperience(Experience experience){
+        if (experiences == null){
+            this.experiences = new HashSet<>();
+        }
+        this.experiences.add(experience);
+    }
 }

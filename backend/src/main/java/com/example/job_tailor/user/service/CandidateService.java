@@ -6,7 +6,6 @@ import com.example.job_tailor.user.dto.response.AddCandidateSkillResponse;
 import com.example.job_tailor.user.dto.response.CreateCandidateResponse;
 import com.example.job_tailor.user.dto.response.GetCandidateByIdResponse;
 import com.example.job_tailor.user.model.Candidate;
-import com.example.job_tailor.user.model.CandidateSkill;
 
 import java.util.List;
 
