@@ -6,6 +6,7 @@ import lombok.Getter;
 import lombok.NonNull;
 import lombok.Setter;
 
+import java.math.BigInteger;
 import java.time.LocalDate;
 
 
@@ -17,7 +18,7 @@ public class Experience {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "experience_id", unique = true)
-    private Long ExperienceId;
+    private Long experienceId;
 
     @NonNull
     @Column(name = "name")
@@ -41,10 +42,8 @@ public class Experience {
     @JoinColumn(name="type_id")
     private Type type;
 
-    @ManyToOne
-    @JoinColumn(name = "candidate_id")
-    private Candidate candidate;
-
+    @Column(name = "candidate_id")
+    private Long candidateId;
 //   FIX
 //    @OneToOne
 //    @JoinColumn(name = "url_id", nullable = false)

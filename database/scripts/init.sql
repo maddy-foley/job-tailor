@@ -182,7 +182,7 @@ WHERE candidates.first_name='jane' AND skills.name='Japanese';
 
 INSERT INTO types(name) VALUES ('job'),('project');
 
-INSERT INTO experiences (name, establishment, description, start_date, end_date, type_id, candidate_id, url_id)
+INSERT INTO experiences (name, establishment, description, start_date, end_date, type_id, candidate_id)
 SELECT
     'my title'
     , 'google'
@@ -191,9 +191,8 @@ SELECT
     , NOW()
     , types.type_id
     , candidates.candidate_id
-    , urls.url_id
-FROM types, candidates, urls
-WHERE types.name='job'AND candidates.first_name='jane' AND urls.candidate_id = candidates.candidate_id;
+FROM types, candidates
+WHERE types.name='job'AND candidates.first_name='jane';
 
 INSERT INTO accomplishments (description, experience_id)
 SELECT

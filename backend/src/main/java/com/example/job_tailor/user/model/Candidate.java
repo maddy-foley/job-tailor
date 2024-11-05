@@ -49,8 +49,8 @@ public class Candidate {
 
 //    @OneToMany(mappedBy = "candidate", cascade = CascadeType.ALL, orphanRemoval = true)
 //    Set<CandidateSkill> CandidateSkills = new HashSet<>();
-
-    @OneToMany(mappedBy = "experience", cascade = CascadeType.ALL, orphanRemoval = true)
+//
+    @OneToMany(mappedBy = "candidateId", cascade = CascadeType.ALL)
     Set<Experience> experiences;
 
     public Candidate(){

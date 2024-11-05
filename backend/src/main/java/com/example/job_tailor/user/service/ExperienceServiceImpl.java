@@ -7,6 +7,7 @@ import com.example.job_tailor.user.repo.ExperienceRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Set;
 
 @Service
@@ -24,14 +25,14 @@ public class ExperienceServiceImpl implements ExperienceService{
     }
 
     @Override
-    public Experience createExperience(Long id, Experience experience){
+    public Set<Experience> createExperience(Long id, Experience experience){
         Candidate c = candidateRepo.findById(id).orElse(null);
         if (c == null || experience == null){
             return null;
         }
-        experience.setCandidate(c);
-
-        return experienceRepo.save(experience);
+        c.addExperience(experience);
+        candidateRepo.save(c);
+        return c.getExperiences();
     }
 
     @Override
@@ -41,5 +42,10 @@ public class ExperienceServiceImpl implements ExperienceService{
             return null;
         }
         return c.getExperiences();
+    }
+
+    @Override
+    public List<Experience> getAllExperiences(){
+        return experienceRepo.findAll();
     }
 }
