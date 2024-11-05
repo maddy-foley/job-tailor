@@ -2,7 +2,6 @@ package com.example.job_tailor.application.model;
 
 import com.example.job_tailor.common.model.Skill;
 import com.example.job_tailor.user.model.Candidate;
-import com.example.job_tailor.user.model.EnumStatus;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NonNull;
