@@ -1,6 +1,7 @@
 package com.example.job_tailor.user.controller;
 
 import com.example.job_tailor.user.dto.response.ExperienceResponse;
+import com.example.job_tailor.user.model.Accomplishment;
 import com.example.job_tailor.user.model.Experience;
 import com.example.job_tailor.user.service.ExperienceService;
 import lombok.NonNull;
@@ -21,6 +22,7 @@ public class ExperienceController {
 
     @Autowired
     public ExperienceService experienceService;
+
     public ExperienceController(ExperienceService experienceService){ this.experienceService = experienceService; }
     @PostMapping("public/candidate/{id}/experience/new")
     public ResponseEntity<Set<Experience>> createExperience(@PathVariable("id") Long id, @RequestBody Experience experience){

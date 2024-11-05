@@ -8,6 +8,7 @@ import lombok.Setter;
 
 import java.math.BigInteger;
 import java.time.LocalDate;
+import java.util.Set;
 
 
 @Getter
@@ -44,6 +45,11 @@ public class Experience {
 
     @Column(name = "candidate_id")
     private Long candidateId;
+
+    //possibly make embedded in future
+    @OneToMany(mappedBy = "experienceId", cascade = CascadeType.ALL)
+    Set<Accomplishment> accomplishments;
+
 //   FIX
 //    @OneToOne
 //    @JoinColumn(name = "url_id", nullable = false)

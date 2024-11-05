@@ -20,8 +20,7 @@ public class Accomplishment {
     @Column(name = "description")
     private String description;
 
-    @ManyToOne
-    @JoinColumn(name = "experience_id", nullable = false)
-    Experience experience;
+    @Column(name = "experience_id")
+    private Long experienceId;
     public Accomplishment(){};
 }

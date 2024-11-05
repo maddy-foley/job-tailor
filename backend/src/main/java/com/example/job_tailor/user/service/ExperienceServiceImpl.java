@@ -1,8 +1,10 @@
 package com.example.job_tailor.user.service;
 
 import com.example.job_tailor.user.dto.response.ExperienceResponse;
+import com.example.job_tailor.user.model.Accomplishment;
 import com.example.job_tailor.user.model.Candidate;
 import com.example.job_tailor.user.model.Experience;
+import com.example.job_tailor.user.repo.AccomplishmentRepo;
 import com.example.job_tailor.user.repo.CandidateRepo;
 import com.example.job_tailor.user.repo.ExperienceRepo;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,9 +23,13 @@ public class ExperienceServiceImpl implements ExperienceService{
     @Autowired
     private CandidateRepo candidateRepo;
 
-    ExperienceServiceImpl(ExperienceRepo experienceRepo, CandidateRepo candidateRepo){
+    @Autowired
+    private AccomplishmentRepo accomplishmentRepo;
+
+    ExperienceServiceImpl(ExperienceRepo experienceRepo, CandidateRepo candidateRepo, AccomplishmentRepo accomplishmentRepo){
         this.experienceRepo = experienceRepo;
         this.candidateRepo = candidateRepo;
+        this.accomplishmentRepo = accomplishmentRepo;
     }
 
     @Override
@@ -54,6 +60,7 @@ public class ExperienceServiceImpl implements ExperienceService{
             expRes.setEndDate(e.getEndDate());
             expRes.setType(e.getType().getName());
             expResSet.add(expRes);
+            expRes.setAccomplishments(e.getAccomplishments());
         }
 
         return expResSet;
@@ -63,4 +70,5 @@ public class ExperienceServiceImpl implements ExperienceService{
     public List<Experience> getAllExperiences(){
         return experienceRepo.findAll();
     }
+
 }
