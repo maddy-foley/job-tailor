@@ -51,7 +51,7 @@ public class Candidate {
 //    Set<CandidateSkill> CandidateSkills = new HashSet<>();
 //
     @OneToMany(mappedBy = "candidateId", cascade = CascadeType.ALL)
-    Set<Experience> experiences;
+    private Set<Experience> experiences;
 
     public Candidate(){
     }

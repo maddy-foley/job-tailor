@@ -13,6 +13,4 @@ public class ApplicationSkill {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "application_skill_id", unique = true)
     private Long applicationSkillID;
-
-
 }

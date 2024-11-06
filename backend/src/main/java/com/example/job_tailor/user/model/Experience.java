@@ -48,7 +48,7 @@ public class Experience {
 
     //possibly make embedded in future
     @OneToMany(mappedBy = "experienceId", cascade = CascadeType.ALL)
-    Set<Accomplishment> accomplishments;
+    private Set<Accomplishment> accomplishments;
 
 //   FIX
 //    @OneToOne

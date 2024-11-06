@@ -30,7 +30,7 @@ public class Skill {
         joinColumns = @JoinColumn(name = "skill_id"),
         inverseJoinColumns = @JoinColumn(name = "category_id")
     )
-    Set<Category> categories;
+    private Set<Category> categories;
 
     public Skill(){}
 

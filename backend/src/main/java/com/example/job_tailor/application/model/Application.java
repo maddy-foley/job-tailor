@@ -42,9 +42,8 @@ public class Application {
     @Column(name = "job_post")
     private String jobPost;
 
-    @ManyToOne
-    @JoinColumn(name = "candidate_id", nullable = false)
-    Candidate candidate;
+    @Column(name = "candidate_id")
+    private Long candidateId;
 
     @ManyToMany
     @JoinTable(
@@ -52,9 +51,9 @@ public class Application {
         joinColumns = @JoinColumn(name = "application_id"),
         inverseJoinColumns = @JoinColumn(name = "skill_id")
     )
-    Set<Skill> skills = new HashSet<>();
+    private Set<Skill> skills = new HashSet<>();
 
-    @Enumerated(value = EnumType.STRING)
+    @Enumerated(value = EnumType.ORDINAL)
     @Column(name = "status")
     private EnumStatus status;
 
