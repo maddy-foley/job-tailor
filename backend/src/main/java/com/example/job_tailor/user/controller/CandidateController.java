@@ -21,6 +21,7 @@ import java.util.List;
 
 @ComponentScan
 @RestController
+@CrossOrigin(origins = "http://localhost:4200")
 @RequestMapping(value = "api", produces = MediaType.APPLICATION_JSON_VALUE)
 public class CandidateController {
 
