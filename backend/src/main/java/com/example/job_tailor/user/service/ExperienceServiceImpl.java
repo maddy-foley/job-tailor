@@ -33,14 +33,22 @@ public class ExperienceServiceImpl implements ExperienceService{
     }
 
     @Override
-    public Set<Experience> createExperience(Long id, Experience experience){
+    public ExperienceResponse createExperience(Long id, Experience experience){
         Candidate c = candidateRepo.findById(id).orElse(null);
+
         if (c == null || experience == null){
             return null;
         }
+        for(Accomplishment a : experience.getAccomplishments()){
+            a.setExperienceId(experience.getExperienceId());
+            accomplishmentRepo.save(a);
+        }
+        Experience e = experienceRepo.save(experience);
+
         c.addExperience(experience);
         candidateRepo.save(c);
-        return c.getExperiences();
+
+        return buildExperienceResponse(e);
     }
 
     @Override
@@ -52,15 +60,8 @@ public class ExperienceServiceImpl implements ExperienceService{
         Set<ExperienceResponse> expResSet = new HashSet<>();
         Set<Experience> es = c.getExperiences();
         for(Experience e:es){
-            ExperienceResponse expRes = new ExperienceResponse();
-            expRes.setName(e.getName());
-            expRes.setDescription(e.getDescription());
-            expRes.setEstablishment(e.getEstablishment());
-            expRes.setStartDate(e.getStartDate());
-            expRes.setEndDate(e.getEndDate());
-            expRes.setType(e.getType().getName());
+            ExperienceResponse expRes = buildExperienceResponse(e);
             expResSet.add(expRes);
-            expRes.setAccomplishments(e.getAccomplishments());
         }
 
         return expResSet;
@@ -69,6 +70,18 @@ public class ExperienceServiceImpl implements ExperienceService{
     @Override
     public List<Experience> getAllExperiences(){
         return experienceRepo.findAll();
+    }
+
+    public ExperienceResponse buildExperienceResponse(Experience e){
+        ExperienceResponse expRes = new ExperienceResponse();
+        expRes.setName(e.getName());
+        expRes.setDescription(e.getDescription());
+        expRes.setEstablishment(e.getEstablishment());
+        expRes.setStartDate(e.getStartDate());
+        expRes.setEndDate(e.getEndDate());
+        expRes.setType(e.getType().getName());
+        expRes.setAccomplishments(e.getAccomplishments());
+        return expRes;
     }
 
 }

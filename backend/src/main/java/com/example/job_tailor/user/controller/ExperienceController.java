@@ -25,8 +25,8 @@ public class ExperienceController {
 
     public ExperienceController(ExperienceService experienceService){ this.experienceService = experienceService; }
     @PostMapping("public/candidate/{id}/experience/new")
-    public ResponseEntity<Set<Experience>> createExperience(@PathVariable("id") Long id, @RequestBody Experience experience){
-        Set<Experience> e = experienceService.createExperience(id, experience);
+    public ResponseEntity<ExperienceResponse> createExperience(@PathVariable("id") Long id, @RequestBody Experience experience){
+        ExperienceResponse e = experienceService.createExperience(id, experience);
 
         return new ResponseEntity<>(e, HttpStatus.OK);
     }

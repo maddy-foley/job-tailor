@@ -7,7 +7,7 @@ import java.util.List;
 import java.util.Set;
 
 public interface ExperienceService {
-    Set<Experience> createExperience(Long id, Experience experience);
+    ExperienceResponse createExperience(Long id, Experience experience);
     Set<ExperienceResponse> getCandidateExperience(Long id);
 
     List<Experience> getAllExperiences();
