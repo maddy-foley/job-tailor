@@ -6,11 +6,11 @@ import { candidate } from './candidate';
   providedIn: 'root'
 })
 export class CandidateService {
-  private _url: string = "https://localhost:8080:"
-  constructor(private http: HttpClient){
-    getCandidate(): any {
-      return this.http.get<candidate>(this._url + '1');
-    }
-  }
+  // private _url: string = "https://localhost:8080:"
+  // constructor(private http: HttpClient){
+  //   getCandidate(): any {
+  //     return this.http.get<candidate>(this._url + '/public/candidate/1');
+  //   }
+  // }
 
 }
