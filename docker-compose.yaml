@@ -1,22 +1,40 @@
 services:
-  server:
+  backend:
     build: ./backend
-    image: app
+    image: backend
     container_name: spring-app
     environment:
       SPRING_DATASOURCE_URL: jdbc:postgresql://db:5432/mydb
     ports:
       - "8080:8080"
+    networks:
+      - job-network
     depends_on:
       - db
-    volumes:
-      - ./src:/app/src
-  client:
+#    volumes:
+#      - ./src:/app/src
+  frontend:
     image: angular
     container_name: angular-client
-    build: ./frontend
+    build: ./frontend/projects
+    command: npm start
     ports:
-      - "4200:80"
+      - "4200:4200"
+    networks:
+      - job-network
+#    volumes:
+#      - ./html5up-stellar/:/usr/share/nginx/html
+#  nginx:
+#    container_name: nginx
+#    image: nginx:alpine
+#    ports:
+#      - "80:80"
+#    networks:
+#        - job-network
+#    volumes:
+#      - ./frontend/nginx.conf:/etc/nginx/nginx.conf
+#    depends_on:
+#      - backend
   db:
     image: postgres
     container_name: db
@@ -37,3 +55,7 @@ services:
 #      - '5672'
 volumes:
   data:
+
+networks:
+  job-network:
+    driver: bridge
