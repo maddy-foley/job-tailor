@@ -16,7 +16,7 @@ services:
   frontend:
     image: angular
     container_name: angular-client
-    build: ./frontend/projects
+    build: ./frontend
     command: npm start
     ports:
       - "4200:4200"
