@@ -13,15 +13,15 @@ services:
       - db
 #    volumes:
 #      - ./src:/app/src
-  frontend:
-    image: angular
-    container_name: angular-client
-    build: ./frontend
-    command: npm start
-    ports:
-      - "4200:4200"
-    networks:
-      - job-network
+#  frontend:
+#    image: angular
+#    container_name: angular-client
+#    build: ./frontend
+#    command: npm start
+#    ports:
+#      - "4200:4200"
+#    networks:
+#      - job-network
 #    volumes:
 #      - ./html5up-stellar/:/usr/share/nginx/html
 #  nginx:
