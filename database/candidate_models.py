@@ -18,9 +18,7 @@ class Address(Base):
     state: Mapped[Optional[str]] = mapped_column(Text)
     city: Mapped[Optional[str]] = mapped_column(Text)
     candidate_id: Mapped[int] = mapped_column(ForeignKey("candidate.id"))
-    candidate: Mapped["Candidate"] = relationship(
-        back_populates="candidate", cascade="all, delete-orphan"
-    )
+    candidate: Mapped["Candidate"] = relationship(back_populates="address")
 
 class Candidate(Base):
     __tablename__ = "candidate"
@@ -30,7 +28,7 @@ class Candidate(Base):
     last_name: Mapped[str] = mapped_column(Text)
     date_created: Mapped[datetime] = mapped_column(DateTime)
     date_updated: Mapped[Optional[datetime]] = mapped_column(DateTime)
-    address: Mapped["Address"] = relationship(
+    address: Mapped[List["Address"]] = relationship(
         back_populates="candidate", cascade="all, delete-orphan"
     )
     skills: Mapped[Optional[List["CandidateSkill"]]] = relationship(back_populates="candidate")
@@ -43,8 +41,8 @@ class CandidateSkill(Base):
         ForeignKey("candidate.id"), primary_key=True
     )
 
-    candidate: Mapped["Candidate"] = relationship(back_populates="candidate")
-    skill: Mapped["Skill"] = relationship(back_populates="skill")
+    candidate: Mapped["Candidate"] = relationship(back_populates="skills")
+    # skill: Mapped["Skill"] = relationship(back_populates="candidate")
     ability: Mapped[Optional[int]] = mapped_column(Integer)
     yoe: Mapped[Optional[int]] = mapped_column(Integer)
 
@@ -59,10 +57,10 @@ class Experience(Base):
     end_date: Mapped[Optional[datetime]] = mapped_column(DateTime)
     experience_type_id: Mapped[int] = mapped_column(ForeignKey("experience_type.id"))
     experience_type: Mapped[List["ExperienceType"]] = relationship(
-        back_populates="experience_type", cascade="all, delete-orphan"
+        back_populates="experience"
     )
-    accomplishment: Mapped[List["Accomplishment"]] = relationship(
-        back_populates="accomplishment", cascade="all, delete-orphan"
+    accomplishments: Mapped[List["Accomplishment"]] = relationship(
+        back_populates="experience", cascade="all, delete-orphan"
     )
 
 class ExperienceType(Base):
@@ -70,6 +68,7 @@ class ExperienceType(Base):
 
     id: Mapped[int] = mapped_column(primary_key=True)
     name: Mapped[str] = mapped_column(Text)
+    experience: Mapped["Experience"] = relationship(back_populates="experience_type")
 
 class Accomplishment(Base):
     __tablename__ = "accomplishment"
@@ -78,5 +77,5 @@ class Accomplishment(Base):
     description: Mapped[str] = mapped_column(Text)
     experience_id: Mapped[int] = mapped_column(ForeignKey("experience.id"))
     experience: Mapped["Experience"] = relationship(
-        back_populates="experience"
+        back_populates="accomplishments"
     )

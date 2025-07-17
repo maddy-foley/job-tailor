@@ -27,14 +27,11 @@ class Application(Base):
     date_created: Mapped[datetime] = mapped_column(DateTime)
     date_updated: Mapped[Optional[datetime]] = mapped_column(DateTime)
     job_post: Mapped[Optional[str]] = mapped_column(Text)
-    candidate_id: Mapped[int] = mapped_column(ForeignKey("candidate.id"))
-    candidate: Mapped["Candidate"] = relationship(
-        back_populates="candidate", cascade="all, delete-orphan"
-    )
+    candidate_id: Mapped[Optional[int]] = mapped_column(ForeignKey("candidate.id"))
     status: Mapped[Status] = mapped_column(Integer, default=0)
     notes: Mapped[Optional[str]] = mapped_column(Text)
     skills: Mapped[List["ApplicationSkill"]] = relationship(
-        back_populates="skill"
+        back_populates="application"
     )
 
 class ApplicationSkill(Base):
@@ -44,7 +41,7 @@ class ApplicationSkill(Base):
     application_id: Mapped[int] = mapped_column(
         ForeignKey("application.id"), primary_key=True
     )
-    application: Mapped["Application"] = relationship(back_populates="application")
-    skill: Mapped["Skill"] = relationship(back_populates="skill")
+    application: Mapped["Application"] = relationship(back_populates="skills")
+    skill: Mapped["Skill"] = relationship()
     ability: Mapped[Optional[int]] = mapped_column(Integer)
     yoe: Mapped[Optional[int]] = mapped_column(Integer)
