@@ -31,7 +31,7 @@ class Application(Base):
     candidate: Mapped["Candidate"] = relationship(
         back_populates="candidate", cascade="all, delete-orphan"
     )
-    status: Mapped[Status] = mapped_column(Integer)
+    status: Mapped[Status] = mapped_column(Integer, default=0)
     notes: Mapped[Optional[str]] = mapped_column(Text)
     skills: Mapped[List["ApplicationSkill"]] = relationship(
         back_populates="skill"
